@@ -1,0 +1,50 @@
+
+
+
+Product
+  name string unique
+  price decimal
+  cogs decimal
+
+Distributor
+  name string unique
+  discount integer
+  has many contacts
+
+Project
+  name string unique
+  confidence integer
+  closed boolean
+  distributor foreign key
+  sales rep string
+  paymentTerms integer
+  notes text
+  has many shipments
+  may have a registration
+
+Shipment
+  belongs to Project
+  product string foreign key
+  quantity integer
+  cableLength decimal
+  price decimal (normally list price minus distributor discount)
+  date
+  notes text
+
+Contact
+  belongs to Distributor
+  name string unique
+  email string
+  phone string
+  notes text
+
+Registration
+  belongs to Project
+  expiration date
+  has many contacts
+  notes text
+
+User
+  name string unique
+  admin boolean
+  password string
