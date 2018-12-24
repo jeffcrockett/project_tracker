@@ -10,12 +10,22 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
-//= require_tree .
-//
 // For bootstrap:
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+// 
+// For searchable dropdowns:
+//= require select2
+//
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require_tree .
+
+
+$(document).on("turbolinks:load", function(){
+  $( "#sibs-id" ).select2({
+      theme: "bootstrap"
+  });
+});
