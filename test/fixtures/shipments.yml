@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  product: one
+  quantity: 1
+  cable_length: 9.99
+  price: 9.99
+  date: 2018-12-24
+  notes: MyText
+
+two:
+  project: two
+  product: two
+  quantity: 1
+  cable_length: 9.99
+  price: 9.99
+  date: 2018-12-24
+  notes: MyText

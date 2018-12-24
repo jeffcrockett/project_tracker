@@ -2,17 +2,21 @@
 
 
 Product
-  name string unique
+  name string unique index
   price decimal
   cogs decimal
+rails generate model product name:string:uniq 'price:decimal{10,2}'
+'cogs:decimal{10,2}'
 
 Distributor
-  name string unique
+  name string unique index
   discount integer
+  notes text
   has many contacts
+rails generate model distributor name:string:uniq discount:integer notes:text
 
 Project
-  name string unique
+  name string unique index
   confidence integer
   closed boolean
   distributor foreign key
@@ -33,7 +37,7 @@ Shipment
 
 Contact
   belongs to Distributor
-  name string unique
+  name string unique index
   email string
   phone string
   notes text
