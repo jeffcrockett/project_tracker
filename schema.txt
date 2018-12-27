@@ -5,6 +5,7 @@ Product
   name string unique index
   price decimal
   cogs decimal
+  has many shipments
 rails generate model product name:string:uniq 'price:decimal{10,2}'
 'cogs:decimal{10,2}'
 
@@ -13,6 +14,7 @@ Distributor
   discount integer
   notes text
   has many contacts
+  has many projects
 rails generate model distributor name:string:uniq discount:integer notes:text
 
 Project
@@ -25,15 +27,17 @@ Project
   notes text
   has many shipments
   may have a registration
+rails generate model project name:string:uniq closed:boolean confidence:integer distributor:references rep:string payment_terms integer notes:text
 
 Shipment
   belongs to Project
-  product string foreign key
+  belongs to Product
   quantity integer
   cableLength decimal
   price decimal (normally list price minus distributor discount)
   date
   notes text
+rails generate model shipment project:references product:references quantity:integer 'cable_length:decimal{5,1}' 'price:decimal{10,2}' date:date notes:text
 
 Contact
   belongs to Distributor
@@ -41,12 +45,14 @@ Contact
   email string
   phone string
   notes text
+rails generate model contact distributor:references name:string:uniq email:string phone:string notes:text
 
 Registration
   belongs to Project
+  belongs to Contact
   expiration date
-  has many contacts
   notes text
+rails generate model registration project:references contact:references expiration:date notes:text
 
 User
   name string unique

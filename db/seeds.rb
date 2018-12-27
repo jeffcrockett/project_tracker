@@ -5,3 +5,202 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Product.destroy_all
+
+Product.create!([
+{
+  name:"PTA PRO 1S",
+  price:104.00,
+  cogs:30.42
+},
+{
+  name:"PTA PRO 2S 1LTE !WIFI",
+  price:129.00,
+  cogs:37.73
+},
+{
+  name:"PTA PRO 3S LTEWIFIGPS",
+  price:144.00,
+  cogs:42.12
+},
+{
+  name:"PTA PRO 1ST",
+  price:104.00,
+  cogs:30.42
+},
+{
+  name:"PTA PRO 2ST",
+  price:134.00,
+  cogs:39.20
+},
+{
+  name:"PTA PRO 3ST",
+  price:149.00,
+  cogs:43.58
+},
+{
+  name:"PTA PRO 4ST",
+  price:174.00,
+  cogs:50.90
+},
+{
+  name:"PTA PRO 5ST",
+  price:209.00,
+  cogs:61.13
+},
+{
+  name:"PTA PRO 6ST",
+  price:219.00,
+  cogs:64.06
+},
+{
+  name:"PTA PRO 2C",
+  price:209.00,
+  cogs:61.13
+},
+{
+  name:"PTA PRO 3C",
+  price:219.00,
+  cogs:64.06
+},
+{
+  name:"PTA PRO 4C",
+  price:229.00,
+  cogs:66.98
+},
+{
+  name:"PTA PRO 4C - Double MIMO",
+  price:329.00,
+  cogs:96.23
+},
+{
+  name:"PTA PRO 5C",
+  price:249.00,
+  cogs:72.83
+},
+{
+  name:"PTA PRO 5C - Double MIMO/GPS",
+  price:329.00,
+  cogs:96.23
+},
+{
+  name:"PTA PRO 2R",
+  price:209.00,
+  cogs:61.13
+},
+{
+  name:"PTA PRO 3R",
+  price:239.00,
+  cogs:69.91
+},
+{
+  name:"PTA PRO 4R",
+  price:249.00,
+  cogs:72.83
+},
+{
+  name:"PTA PRO 5R",
+  price:259.00,
+  cogs:75.76
+},
+{
+  name:"PTA PRO 6R",
+  price:269.00,
+  cogs:78.68
+},
+{
+  name:"PTA PRO 2D",
+  price:295.00,
+  cogs:86.29
+},
+{
+  name:"PTA PRO 3D",
+  price:305.00,
+  cogs:89.21
+},
+{
+  name:"PTA PRO 4D",
+  price:315.00,
+  cogs:92.14
+},
+{
+  name:"PTA PRO 5D",
+  price:325.00,
+  cogs:95.06
+},
+{
+  name:"PTA PRO 6D",
+  price:335.00,
+  cogs:97.99
+},
+{
+  name:"PTA PRO 2GS",
+  price:279.00,
+  cogs:81.61
+},
+{
+  name:"PTA PRO 3GS",
+  price:299.00,
+  cogs:87.46
+},
+{
+  name:"PTA PRO 4GS",
+  price:319.00,
+  cogs:93.31
+},
+{
+  name:"PTA PRO 5GS",
+  price:339.00,
+  cogs:99.16
+},
+{
+  name:"PTA PRO 7H - 2LTE/4WIFI/GPS",
+  price:409.00,
+  cogs:119.63
+},
+{
+  name:"PTA PRO 7H",
+  price:445.00,
+  cogs:130.16
+},
+{
+  name:"PTA PRO 9H",
+  price:509.00,
+  cogs:148.88
+},
+{
+  name:"PTA PRO 11H",
+  price:549.00,
+  cogs:160.58
+},
+{
+  name:"Labrador W/1ft Conn.",
+  price:129.00,
+  cogs:37.73
+},
+{
+  name:"Labrador W/15ft",
+  price:149.00,
+  cogs:43.58
+},
+{
+  name:"Great Dane",
+  price:329.00,
+  cogs:96.23
+},
+{
+  name:"Great Dane W Cables",
+  price:399.00,
+  cogs:116.71
+},
+{
+  name:"Blade",
+  price:69.00,
+  cogs:20.18
+},
+{
+  name:"MM MIMO",
+  price:49.00,
+  cogs:14.33
+}])
