@@ -1,0 +1,34 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>Products</h1>
+      <h4 style="padding-top:20px;">Select a Product:</h4>
+      <select id="prod_select" class="data-searchable" style="width:300px;">
+        <option value=-1></option>
+        <option value=0>Add new product</option>
+        <% @products = @products.sort {|a,b| a.name <=> b.name } %>
+        <% @products.each do |p| %>
+          <option value= <%= "#{p.id}|#{p.price}|#{p.cogs}|" %> > <%= p.name %> </option>
+        <% end %>
+      </select>
+
+      <form id="prod_form" style="padding-top:40px;">
+        <div class="form-group">
+          <label for="productName">Product name:</label>
+          <input type="string" class="form-control" id="prod_name" >
+        </div>
+        <div class="form-group">
+          <label for="productPrice">Price:</label>
+          <input type="decimal" class="form-control" id="prod_price" >
+        </div>
+        <div class="form-group">
+          <label for="productCOGS">COGS:</label>
+          <input type="decimal" class="form-control" id="prod_cogs" >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</container>
