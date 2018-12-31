@@ -6,6 +6,8 @@
       <div style="padding-top:3em;">
         <h1>Add a Product</h1>
       </div>
+      <% @theObject = @product %>
+      <%= render 'shared/error_messages' %>
       <%= render "shared/product_form" %>
     </div>
   </div>

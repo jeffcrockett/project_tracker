@@ -8,7 +8,11 @@ class ProductsController < ApplicationController
   end
 
   def create
-    raise "create"
+    @product = Product.new(product_params)
+    if @product.save
+      @product = Product.new
+    end
+    render "new"
   end
 
   def edit
@@ -17,10 +21,22 @@ class ProductsController < ApplicationController
   end
 
   def update
-    raise "update"
+    @products = Product.order(:name)
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+      render "index"
+    else
+      render "edit"
+    end
   end
 
   def show
     raise "show"
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :price, :cogs)
   end
 end
