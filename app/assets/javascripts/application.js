@@ -39,14 +39,10 @@ $(document).on("turbolinks:load", function(){
 // Handle a selection for the Product select list
 $(document).on("turbolinks:load", function(){
   $("#prod_select").on("select2:select", function(e){
-    if(e.params.data.text === "Add new product") {
-      $("#prod_name").val("")
-    } else {
-      $("#prod_name").val(e.params.data.text)
+    if(e.params.data.id != "0") {
+      window.location = "/products/" + e.params.data.id + "/edit"
     }
-    let fields = e.params.data.id.split("|")
-    $("#prod_price").val(fields[1])
-    $("#prod_cogs").val(fields[2])
   });
 });
+
 

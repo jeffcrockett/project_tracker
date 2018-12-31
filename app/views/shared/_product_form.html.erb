@@ -1,0 +1,16 @@
+<div style="height:40px"></div>
+<%= form_for @product do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Product name:", class: "control-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, "List price:", class: "control-label" %>
+    <%= f.text_field :price, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cogs, "COGS:", class: "control-label" %>
+    <%= f.text_field :cogs, class: "form-control" %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+<% end %>

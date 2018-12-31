@@ -2,48 +2,11 @@
 
 <container>
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-1"></div>
-
-
-    <div class="col">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
       <div style="padding-top:3em;">
         <h1>Add a Product</h1>
       </div>
-      <form>
-        <div class="form-group">
-          <label for="productName">Product name</label>
-          <input type="string" class="form-control" id="productName" placeholder="Enter product name">
-        </div>
-        <div class="form-group">
-          <label for="productPrice">Price</label>
-          <input type="number" class="form-control" id="productPrice" placeholder="Enter price">
-        </div>
-        <div class="form-group">
-          <label for="productCOGS">COGS</label>
-          <input type="number" class="form-control" id="productCOGS" placeholder="Enter COGS">
-        </div>
-        <div class="form-group">
-          <label>Sibling</label>
-          <select name="Siblings" class="form-control data-searchable">
-            <option value="None"></option>
-            <option value="Gary">Gary</option>
-            <option value="Bryan">Bryan</option>
-            <option value="Nan">Nan</option>
-            <option value="Karla">Karla</option>
-            <option value="Marie">Marie</option>
-            <option value="Marla">Marla</option>
-            <option value="Michelle">Michelle</option>
-            <option value="Malissa">Malissa</option>
-            <option value="Marc">Marc</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      <%= render "shared/product_form" %>
     </div>
-
-
-    <div class="col-sm-1"></div>
-    <div class="col-md-2"></div>
   </div>
 </container>

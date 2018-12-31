@@ -8,9 +8,12 @@
       <select id="prod_select" class="data-searchable" style="width:300px;">
         <option value=0></option>
         <% @products.each do |p| %>
-          <option value= <%= p.id %> > <%= p.name %> </option>
+          <% sel = p.id==@product.id ? 'selected="selected" ' : '' %>
+          <option <%= "#{sel}" %> value= <%= p.id %> > <%= p.name %> </option>
         <% end %>
       </select>
+
+      <%= render "shared/product_form" %>
     </div>
   </div>
 </container>
