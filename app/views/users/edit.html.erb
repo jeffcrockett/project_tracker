@@ -1,0 +1,21 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>View/Edit Users</h1>
+      <h4 style="padding-top:20px;">Select a User:</h4>
+      <select id="user_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @users.each do |u| %>
+          <% sel = u.id==@user.id ? 'selected="selected" ' : '' %>
+          <option <%= "#{sel}" %> value= <%= u.id %> > <%= u.name %> </option>
+        <% end %>
+      </select>
+
+      <% @theObject = @user %>
+      <%= render 'shared/error_messages' %>
+      <%= render "shared/user_form" %>
+    </div>
+  </div>
+</container>

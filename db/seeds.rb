@@ -5,7 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
 
+def prodID(s)
+  Product.where(name:s).first.id
+end
+
+def projID(s)
+  Project.where(name:s).first.id
+end
+
+def distID(s)
+  Distributor.where(name:s).first.id
+end
+
+def contID(s)
+  Contact.where(name:s).first.id
+end
+
+
+Shipment.destroy_all
+Registration.destroy_all
+Contact.destroy_all
+Project.destroy_all
+Distributor.destroy_all
 Product.destroy_all
 
 Product.create!([
@@ -203,4 +226,266 @@ Product.create!([
   name:"MM MIMO",
   price:49.00,
   cogs:14.33
+}])
+
+
+Distributor.create!([
+{
+  name:"Parsec",
+  discount:0
+},
+{
+  name:"CSG",
+  discount:45
+},
+{
+  name:"INS",
+  discount:45
+},
+{
+  name:"Dist1",
+  discount:25
+},
+{
+  name:"Dist2",
+  discount:25
+}])
+
+
+Project.create!([
+{
+  name:"CSG Restock",
+  confidence:100,
+  distributor_id:distID("CSG"),
+  rep:"Joe Repp",
+  application:"Unknown"
+},
+{
+  name:"INS Restock",
+  confidence:100,
+  distributor_id:distID("INS"),
+  rep:"Jane Repp",
+  application:"Unknown"
+},
+{
+  name:"Project1 Trial",
+  confidence:100,
+  distributor_id:distID("Parsec"),
+  rep:"Joe Repp",
+  application:"Whatever"
+},
+{
+  name:"Project1 Deployment",
+  confidence:80,
+  distributor_id:distID("Parsec"),
+  rep:"Jane Repp",
+  application:"Whatever"
+},
+{
+  name:"Project2",
+  confidence:90,
+  distributor_id:distID("Parsec"),
+  rep:"Joe Repp",
+  application:"Whatever"
+},
+{
+  name:"Project3",
+  confidence:50,
+  distributor_id:distID("CSG"),
+  rep:"Jane Repp",
+  application:"Whatever"
+}])
+
+
+Contact.create!([
+{
+  distributor_id:distID("CSG"),
+  name:"CSG Contact 1",
+  email:"name1@csg.com",
+  phone:"123-555-1212"
+},
+{
+  distributor_id:distID("CSG"),
+  name:"CSG Contact 2",
+  email:"name2@csg.com",
+  phone:"123-555-1212"
+},
+{
+  distributor_id:distID("INS"),
+  name:"INS Contact 1",
+  email:"name1@ins.com",
+  phone:"123-555-1212"
+},
+{
+  distributor_id:distID("INS"),
+  name:"INS Contact 2",
+  email:"name2@ins.com",
+  phone:"123-555-1212"
+},
+{
+  distributor_id:distID("Dist1"),
+  name:"Dist1 Contact 1",
+  email:"name1@dist1.com",
+  phone:"123-555-1212"
+},
+{
+  distributor_id:distID("Dist2"),
+  name:"Dist2 Contact 1",
+  email:"name1@dist2.com",
+  phone:"123-555-1212"
+}])
+
+
+Shipment.create!([
+{
+  project_id:projID("CSG Restock"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"01/01/19"
+},
+{
+  project_id:projID("CSG Restock"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"01/01/19"
+},
+{
+  project_id:projID("CSG Restock"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"02/01/19"
+},
+{
+  project_id:projID("CSG Restock"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"02/01/19"
+},
+{
+  project_id:projID("INS Restock"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"01/02/19"
+},
+{
+  project_id:projID("INS Restock"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"01/02/19"
+},
+{
+  project_id:projID("INS Restock"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"02/02/19"
+},
+{
+  project_id:projID("INS Restock"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"02/02/19"
+},
+{
+  project_id:projID("Project1 Trial"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"01/03/19"
+},
+{
+  project_id:projID("Project1 Trial"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"01/03/19"
+},
+{
+  project_id:projID("Project1 Trial"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"02/03/19"
+},
+{
+  project_id:projID("Project1 Trial"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"02/03/19"
+},
+{
+  project_id:projID("Project1 Deployment"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"01/04/19"
+},
+{
+  project_id:projID("Project1 Deployment"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"01/04/19"
+},
+{
+  project_id:projID("Project1 Deployment"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"02/04/19"
+},
+{
+  project_id:projID("Project1 Deployment"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"02/04/19"
+},
+{
+  project_id:projID("Project2"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"01/05/19"
+},
+{
+  project_id:projID("Project2"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"01/05/19"
+},
+{
+  project_id:projID("Project2"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"02/05/19"
+},
+{
+  project_id:projID("Project2"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"02/05/19"
+},
+{
+  project_id:projID("Project3"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"01/06/19"
+},
+{
+  project_id:projID("Project3"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"01/06/19"
+},
+{
+  project_id:projID("Project3"),
+  product_id:prodID("Great Dane"),
+  quantity:100,
+  date:"02/06/19"
+},
+{
+  project_id:projID("Project3"),
+  product_id:prodID("PTA PRO 1S"),
+  quantity:100,
+  date:"02/06/19"
+}])
+
+
+Registration.create!([
+{
+  project_id:projID("Project3"),
+  contact_id:contID("CSG Contact 1"),
+  expiration:"03/31/19"
 }])

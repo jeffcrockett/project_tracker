@@ -1,0 +1,20 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>Delete Users</h1>
+      <h4 style="padding-top:20px;">Select a User:</h4>
+      <select id="user_del_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @users.each do |u| %>
+          <option value= <%= u.id %> > <%= u.name %> </option>
+        <% end %>
+      </select>
+      <% @theObject = @user %>
+      <%= render "shared/error_messages" %>
+      <div style="height:40px"></div>
+      <button type="button" class="btn btn-primary" id="btn_user_delete">Delete user</button>
+    </div>
+  </div>
+</container>

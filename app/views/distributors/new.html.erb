@@ -1,0 +1,14 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <div style="padding-top:3em;">
+        <h1>Add a Distributor</h1>
+      </div>
+      <% @theObject = @distributor %>
+      <%= render 'shared/error_messages' %>
+      <%= render "shared/distributor_form" %>
+    </div>
+  </div>
+</container>

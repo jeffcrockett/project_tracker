@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_24_170827) do
+ActiveRecord::Schema.define(version: 2019_01_06_172400) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.integer "distributor_id"
@@ -48,11 +54,11 @@ ActiveRecord::Schema.define(version: 2018_12_24_170827) do
     t.integer "confidence"
     t.integer "distributor_id"
     t.string "rep"
-    t.string "payment_terms"
-    t.string "integer"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "application"
+    t.integer "company_id"
     t.index ["distributor_id"], name: "index_projects_on_distributor_id"
     t.index ["name"], name: "index_projects_on_name", unique: true
   end
@@ -80,6 +86,16 @@ ActiveRecord::Schema.define(version: 2018_12_24_170827) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_shipments_on_product_id"
     t.index ["project_id"], name: "index_shipments_on_project_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.boolean "admin"
+    t.boolean "exec"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
 end

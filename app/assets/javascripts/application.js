@@ -24,6 +24,9 @@
 //= require_tree .
 
 
+//= require bootstrap-datepicker 
+
+
 // Convert select tags to searchable ones
 $(document).on("turbolinks:load", function(){
   $(".data-searchable").select2({
@@ -45,4 +48,41 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
+// Handle the "product delete" button
+$(document).on("turbolinks:load", function () {
+  $("#btn_prod_delete").on("click", function (e) {
+    let id = $("#prod_del_select").val();
+    if (id != "0") {
+      window.location = "/products/" + id + "/delete"
+    }
+  });
+});
 
+// Handle a selection for the User select list
+$(document).on("turbolinks:load", function () {
+  $("#user_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      window.location = "/users/" + e.params.data.id + "/edit"
+    }
+  });
+});
+
+// Handle the "user delete" button
+$(document).on("turbolinks:load", function () {
+  $("#btn_user_delete").on("click", function (e) {
+    let id = $("#user_del_select").val();
+    if (id != "0") {
+      window.location = "/users/" + id + "/delete"
+    }
+  });
+});
+
+//Handle selection for product select list
+$(document).on("turbolinks:load", function () {
+  $("#reg_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      $("#reg_proj_id").val(e.params.data.id)
+      // window.location = "/users/" + e.params.data.id + "/edit"
+    }
+  });
+});

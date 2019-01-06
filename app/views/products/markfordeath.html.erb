@@ -3,19 +3,18 @@
 <container>
   <div class="row">
     <div class="mx-auto" style="width:300px; padding-top:20px;">
-      <h1>View/Edit Products</h1>
+      <h1>Delete Products</h1>
       <h4 style="padding-top:20px;">Select a Product:</h4>
-      <select id="prod_select" class="data-searchable" style="width:300px;">
+      <select id="prod_del_select" class="data-searchable" style="width:300px;">
         <option value=0></option>
         <% @products.each do |p| %>
-          <% sel = p.id==@product.id ? 'selected="selected" ' : '' %>
-          <option <%= "#{sel}" %> value= <%= p.id %> > <%= p.name %> </option>
+          <option value= <%= p.id %> > <%= p.name %> </option>
         <% end %>
       </select>
-
       <% @theObject = @product %>
-      <%= render 'shared/error_messages' %>
-      <%= render "shared/product_form" %>
+      <%= render "shared/error_messages" %>
+      <div style="height:40px"></div>
+      <button type="button" class="btn btn-primary" id="btn_prod_delete">Delete product</button>
     </div>
   </div>
 </container>

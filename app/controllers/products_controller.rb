@@ -30,8 +30,21 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-    raise "show"
+  def markfordeath
+    @products = Product.order(:name)
+    @product = Product.new
+  end
+
+  def destroy
+    @products = Product.order(:name)
+    @product = Product.find(params[:id])
+    if Shipment.where(product_id: @product.id).length > 0
+      @product.errors[:base] << "Can't delete " + @product.name + " because at least one shipment refers to it"
+    else
+      @product.destroy()
+      @product = Product.new
+    end
+    render "markfordeath"
   end
 
   private

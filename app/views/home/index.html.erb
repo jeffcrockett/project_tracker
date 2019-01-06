@@ -1,0 +1,5 @@
+<% if !current_user %>
+    <script>window.location = "/login"</script>
+<% else %>
+    <%= render "shared/menu" %>
+<% end %>
