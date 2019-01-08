@@ -48,6 +48,33 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
+// Handle a selection for the Company select list
+$(document).on("turbolinks:load", function () {
+  $("#comp_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      window.location = "/companies/" + e.params.data.id + "/edit"
+    }
+  });
+});
+
+// Handle a selection for the Registration select list
+$(document).on("turbolinks:load", function () {
+  $("#reg_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      window.location = "/registrations/" + e.params.data.id + "/edit"
+    }
+  });
+});
+
+// Handle a selection for the Registration select list
+$(document).on("turbolinks:load", function () {
+  $("#reg_proj_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      $('#reg_form_id').val(e.params.data.id.toString())
+    }
+  });
+});
+
 // Handle the "product delete" button
 $(document).on("turbolinks:load", function () {
   $("#btn_prod_delete").on("click", function (e) {
@@ -83,6 +110,26 @@ $(document).on("turbolinks:load", function () {
     if (e.params.data.id != "0") {
       $("#reg_proj_id").val(e.params.data.id)
       // window.location = "/users/" + e.params.data.id + "/edit"
+    }
+  });
+});
+
+// Handle the "company delete" button
+$(document).on("turbolinks:load", function () {
+  $("#btn_comp_delete").on("click", function (e) {
+    let id = $("#comp_del_select").val();
+    if (id != "0") {
+      window.location = "/companies/" + id + "/delete"
+    }
+  });
+});
+
+// Handle the "registration delete" button
+$(document).on("turbolinks:load", function () {
+  $("#btn_reg_delete").on("click", function (e) {
+    let id = $("#reg_del_select").val();
+    if (id != "0") {
+      window.location = "/registrations/" + id + "/delete"
     }
   });
 });

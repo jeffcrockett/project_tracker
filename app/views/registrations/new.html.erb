@@ -5,11 +5,11 @@
     <div class="mx-auto" style="width:300px; padding-top:20px;">
       <h1>Add a Registration</h1>
       <h4 style="padding-top:20px;">Select a Project:</h4>
-      <select id="reg_select" class="data-searchable" style="width:300px;">
+      <select id="reg_proj_select" class="data-searchable" style="width:300px;">
         <option value=0></option>
         <% @projects.each do |p| %>
           
-          <option value= <%= p.id %> > <%= full_project_name(p) %> </option>
+          <option value= <%= p.id %> > <%= p.name %> </option>
         <% end %>
       </select>
 

@@ -3,17 +3,17 @@
 <container>
   <div class="row">
     <div class="mx-auto" style="width:300px; padding-top:20px;">
-      <h1>View/Edit Products</h1>
-      <h4 style="padding-top:20px;">Select a Product:</h4>
+      <h1>View/Edit Registrations</h1>
+      <h4 style="padding-top:20px;">Select a Registration:</h4>
       <select id="reg_select" class="data-searchable" style="width:300px;">
         <option value=0></option>
-        <% @projects.each do |p| %>
-          <% sel = p.id==@project.id ? 'selected="selected" ' : '' %>
-          <option <%= "#{sel}" %> value= <%= p.id %> > <%= full_project_name(p) %> </option>
+        <% @registrations.each do |r| %>
+          <% sel = r.id==@registration.id ? 'selected="selected" ' : '' %>
+          <option <%= "#{sel}" %> value= <%= r.id %> > <%= r.name %> </option>
         <% end %>
       </select>
 
-      <% @theObject = @product %>
+      <% @theObject = @registration %>
       <%= render 'shared/error_messages' %>
       <%= render "shared/registration_form" %>
     </div>

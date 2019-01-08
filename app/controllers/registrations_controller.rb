@@ -1,11 +1,12 @@
 class RegistrationsController < ApplicationController
     def index
-        @registrations = Registration.order(:name)
+        @registrations = helpers.registration_list
+        puts @registrations.inspect
     end
 
     def new
         @registration = Registration.new
-        @projects = Project.all
+        @projects = helpers.unregistered_project_list
     end
 
     def create
@@ -13,16 +14,20 @@ class RegistrationsController < ApplicationController
         if @registration.save
             @registration = Registration.new
         end
+        @projects = helpers.unregistered_project_list
         render "new"
     end
 
     def edit
-        @registrations = Registration.order(:name)
+        @registrations = helpers.registration_list
+        puts params[:id]
+        puts params[:id].class
         @registration = Registration.find(params[:id])
+        puts Registration.first.project_id
     end
 
     def update
-        @registrations = Registration.order(:name)
+        @registrations = helpers.registration_list
         @registration = Registration.find(params[:id])
         if @registration.update_attributes(registration_params)
             render "index"
@@ -38,7 +43,7 @@ class RegistrationsController < ApplicationController
     private
 
     def registration_params
-        params.require(:registration).permit(:project_id, :contact_id, :expiration, :notes)
+        params.require(:registration).permit(:project_id, :contact, :expiration, :notes)
     end
 end
 

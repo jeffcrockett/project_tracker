@@ -1,18 +1,16 @@
+<%= render "shared/menu" %>
 
-  <%# <div class="input-group date" data-provide="datepicker">
-    <input type="text" class="form-control">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>View/Edit Registrations</h1>
+      <h4 style="padding-top:20px;">Select a Registration:</h4>
+      <select id="reg_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @registrations.each do |r| %>
+          <option value= <%= r.id %> > <%= r.name %> </option>
+        <% end %>
+      </select>
     </div>
-</div> %>
-  
-  <%# create_table "registrations", force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "contact_id"
-    t.date "expiration"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_registrations_on_contact_id"
-    t.index ["project_id"], name: "index_registrations_on_project_id"
-  end %>
+  </div>
+</container>

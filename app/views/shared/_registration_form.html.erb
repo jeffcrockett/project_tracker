@@ -2,26 +2,26 @@
 
 <%= form_for @registration do |f| %>
 
-  <div class="form-group">
+    <div class="form-group">
     <%= f.label :expiration, "Expiration date:", class: "control-label" %>
-    <%= f.text_field :expiration, data:{ provide:'datepicker' } %>
+    <%= f.date_field :expiration, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+  <%= f.label :project_id, "Project ID:", class:"control-label" %>
+  <%= f.text_field :project_id, class: "form-control", id: "reg_form_id" %>
   </div>
+
+    <div class="form-group">
+    <%= f.label :contact, "Contact:", class: "control-label" %>
+    <%= f.text_field :contact, class: "form-control" %>
+    </div>
+
     <div class="form-group">
     <%= f.label :notes, "Notes:", class: "control-label" %>
     <%= f.text_area :notes, class: "form-control" %>
-  </div>
-  <div class="form-group">
-  <%= f.label :project_id, "Project ID:", class:"control-label" %>
-  <%= f.text_field :project_id, class: "form-control", id: "reg_proj_id" %>
-  </div>
+    </div>
 
-  <%# <div class="form-group">
-    <%= f.label :discount, "Discount level:", class: "control-label" %>
-    <%# <%= f.text_field :discount, class: "form-control" %> 
-  <%# </div> %>
-  <%# <div class="form-group">
-    <%= f.label :notes, "Notes:", class: "control-label" %>
-    <%# <%= f.text_field :notes, class: "form-control" %>
-  <%# </div>   %>
+
   <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
 <% end %>

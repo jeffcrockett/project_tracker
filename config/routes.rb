@@ -13,9 +13,18 @@ Rails.application.routes.draw do
   get 'products/delete', to: 'products#markfordeath'
   get 'products/:id/delete', to: 'products#destroy'
   resources :projects, except: :show
+  get 'projects/delete', to: 'projects#markfordeath'
+  get 'projects/:id/delete', to: 'projects#destroy'
   resources :shipments
+  get 'shipments/delete', to: 'shipments#markfordeath'
+  get 'shipments/:id/delete', to: 'shipments#destroy'
   resources :distributors, except: :show
+  get 'distributors/delete', to: 'distributors#markfordeath'
+  get 'distributors/:id/delete', to: 'distributors#destroy'
   resources :registrations, except: :show
+  get 'registrations/delete', to: 'registrations#markfordeath'
+  get 'registrations/:id/delete', to: 'registrations#destroy'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
