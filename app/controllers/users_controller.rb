@@ -41,10 +41,10 @@ class UsersController < ApplicationController
     if @user
         @user.destroy()
         @user = User.new
-      end
-      render "markfordeath"
     end
+    render "markfordeath"
   end
+  
 
   private
 

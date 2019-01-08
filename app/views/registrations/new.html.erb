@@ -1,14 +1,23 @@
 <%= render "shared/menu" %>
+
 <container>
   <div class="row">
     <div class="mx-auto" style="width:300px; padding-top:20px;">
-      <div style="padding-top:3em;">
-        <h1>Add a Registration</h1>
-      </div>
+      <h1>Add a Registration</h1>
+      <h4 style="padding-top:20px;">Select a Project:</h4>
+      <select id="reg_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @projects.each do |p| %>
+          
+          <option value= <%= p.id %> > <%= full_project_name(p) %> </option>
+        <% end %>
+      </select>
+
       <% @theObject = @registration %>
       <%= render 'shared/error_messages' %>
       <%= render "shared/registration_form" %>
     </div>
   </div>
 </container>
+
   <%# <input type="text" data-provide='datepicker' > %>

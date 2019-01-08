@@ -5,6 +5,7 @@ class RegistrationsController < ApplicationController
 
     def new
         @registration = Registration.new
+        @projects = Project.all
     end
 
     def create
