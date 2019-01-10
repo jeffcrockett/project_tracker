@@ -1,0 +1,21 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>View/Edit Distributors</h1>
+      <h4 style="padding-top:20px;">Select a Distributor:</h4>
+      <select id="dist_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @distributors.each do |d| %>
+          <% sel = d.id==@distributor.id ? 'selected="selected" ' : '' %>
+          <option <%= "#{sel}" %> value= <%= d.id %> > <%= d.name %> </option>
+        <% end %>
+      </select>
+
+      <% @theObject = @distributor %>
+      <%= render 'shared/error_messages' %>
+      <%= render "shared/distributor_form" %>
+    </div>
+  </div>
+</container>

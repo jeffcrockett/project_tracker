@@ -1,0 +1,20 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>Delete Shipments</h1>
+      <h4 style="padding-top:20px;">Select a Shipment:</h4>
+      <select id="ship_del_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @shipments.each do |s| %>
+          <option value= <%= s.id %> > <%= s.date %> </option>
+        <% end %>
+      </select>
+      <% @theObject = @shipment %>
+      <%= render "shared/error_messages" %>
+      <div style="height:40px"></div>
+      <button type="button" class="btn btn-primary" id="btn_ship_delete">Delete shipment</button>
+    </div>
+  </div>
+</container>

@@ -48,6 +48,15 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
+// Handle a selection for the Project select list
+$(document).on("turbolinks:load", function () {
+  $("#proj_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      window.location = "/projects/" + e.params.data.id + "/edit"
+    }
+  });
+});
+
 // Handle a selection for the Company select list
 $(document).on("turbolinks:load", function () {
   $("#comp_select").on("select2:select", function (e) {
@@ -62,6 +71,15 @@ $(document).on("turbolinks:load", function () {
   $("#reg_select").on("select2:select", function (e) {
     if (e.params.data.id != "0") {
       window.location = "/registrations/" + e.params.data.id + "/edit"
+    }
+  });
+});
+
+// Handle a selection for the Distributor select list
+$(document).on("turbolinks:load", function () {
+  $("#dist_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      window.location = "/distributors/" + e.params.data.id + "/edit"
     }
   });
 });
@@ -85,11 +103,50 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
+// Handle the "shipment delete" button
+$(document).on("turbolinks:load", function () {
+  $("#btn_ship_delete").on("click", function (e) {
+    let id = $("#ship_del_select").val();
+    if (id != "0") {
+      window.location = "/shipments/" + id + "/delete"
+    }
+  });
+});
+
+// Handle the "project delete" button
+$(document).on("turbolinks:load", function () {
+  $("#btn_proj_delete").on("click", function (e) {
+    let id = $("#proj_del_select").val();
+    if (id != "0") {
+      window.location = "/projects/" + id + "/delete"
+    }
+  });
+});
+
+// Handle the "distributor delete" button
+$(document).on("turbolinks:load", function () {
+  $("#btn_dist_delete").on("click", function (e) {
+    let id = $("#dist_del_select").val();
+    if (id != "0") {
+      window.location = "/distributors/" + id + "/delete"
+    }
+  });
+});
+
 // Handle a selection for the User select list
 $(document).on("turbolinks:load", function () {
   $("#user_select").on("select2:select", function (e) {
     if (e.params.data.id != "0") {
       window.location = "/users/" + e.params.data.id + "/edit"
+    }
+  });
+});
+
+// Handle a selection for the Shipment select list
+$(document).on("turbolinks:load", function () {
+  $("#ship_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      window.location = "/shipments/" + e.params.data.id + "/edit"
     }
   });
 });

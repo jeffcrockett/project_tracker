@@ -1,0 +1,21 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>View/Edit Shipments</h1>
+      <h4 style="padding-top:20px;">Select a Shipment:</h4>
+      <select id="ship_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @shipments.each do |s| %>
+          <% sel = s.id==@shipment.id ? 'selected="selected" ' : '' %>
+          <option <%= "#{sel}" %> value= <%= s.id %> > <%= s.date %> </option>
+        <% end %>
+      </select>
+
+      <% @theObject = @shipment %>
+      <%= render 'shared/error_messages' %>
+      <%= render "shared/shipment_form" %>
+    </div>
+  </div>
+</container>

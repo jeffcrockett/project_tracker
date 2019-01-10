@@ -1,0 +1,21 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>View/Edit Projects</h1>
+      <h4 style="padding-top:20px;">Select a Project:</h4>
+      <select id="proj_select" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @projects.each do |p| %>
+          <% sel = p.id==@project.id ? 'selected="selected" ' : '' %>
+          <option <%= "#{sel}" %> value= <%= p.id %> > <%= p.name %> </option>
+        <% end %>
+      </select>
+
+      <% @theObject = @project %>
+      <%= render 'shared/error_messages' %>
+      <%= render "shared/project_form" %>
+    </div>
+  </div>
+</container>

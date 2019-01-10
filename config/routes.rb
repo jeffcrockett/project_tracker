@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :projects, except: :show
   get 'projects/delete', to: 'projects#markfordeath'
   get 'projects/:id/delete', to: 'projects#destroy'
-  resources :shipments
+  resources :shipments, except: :show
   get 'shipments/delete', to: 'shipments#markfordeath'
   get 'shipments/:id/delete', to: 'shipments#destroy'
   resources :distributors, except: :show
