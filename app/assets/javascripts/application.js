@@ -93,6 +93,24 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
+// Handle a selection for the Registration select list
+$(document).on("turbolinks:load", function () {
+  $("#ship_proj_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      $('#ship_proj_form_id').val(e.params.data.id.toString())
+    }
+  });
+});
+
+// Handle a selection for the Registration select list
+$(document).on("turbolinks:load", function () {
+  $("#ship_prod_select").on("select2:select", function (e) {
+    if (e.params.data.id != "0") {
+      $('#ship_prod_form_id').val(e.params.data.id.toString())
+    }
+  });
+});
+
 // Handle the "product delete" button
 $(document).on("turbolinks:load", function () {
   $("#btn_prod_delete").on("click", function (e) {

@@ -9,7 +9,7 @@
         <option value=0></option>
         <% @shipments.each do |s| %>
           <% sel = s.id==@shipment.id ? 'selected="selected" ' : '' %>
-          <option <%= "#{sel}" %> value= <%= s.id %> > <%= s.date %> </option>
+          <option <%= "#{sel}" %> value= <%= s.id %> > <%= s.name %> </option>
         <% end %>
       </select>
 

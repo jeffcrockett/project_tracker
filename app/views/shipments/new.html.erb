@@ -6,6 +6,20 @@
       <div style="padding-top:3em;">
         <h1>Add a Shipment</h1>
       </div>
+        <h4 style="padding-top:20px;">Select a Project:</h4>
+        <select id="ship_proj_select" class="data-searchable" style="width:300px;">
+          <option value=0></option>
+          <% @projects.each do |p| %>
+          <option value= <%= p.id %> > <%= p.name %> </option>
+          <% end %>
+        </select>
+        <h4 style="padding-top:20px;">Select a Product:</h4>
+        <select id="ship_prod_select" class="data-searchable" style="width:300px;">
+          <option value=0></option>
+          <% @products.each do |p| %>
+          <option value= <%= p.id %> > <%= p.name %> </option>
+          <% end %>
+        </select>
       <% @theObject = @shipment %>
       <%= render 'shared/error_messages' %>
       <%= render "shared/shipment_form" %>

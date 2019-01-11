@@ -1,16 +1,10 @@
 <div style="height:40px"></div>
 <%= form_for @shipment do |f| %>
   <div class="form-group">
-    <%= f.label :quantity, "Quantity:", class: "control-label" %>
-    <%= f.number_field :quantity, class: "form-control" %>
+    <%= f.text_field :project_id, class: "form-control data-start-hidden", id: "ship_proj_form_id" %>
   </div>
   <div class="form-group">
-    <%= f.label :cable_length, "Cable length:", class: "control-label" %>
-    <%= f.number_field :cable_length, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price, "Price:", class: "control-label" %>
-    <%= f.number_field :price, class: "form-control" %>
+    <%= f.text_field :product_id, class: "form-control data-start-hidden", id: "ship_prod_form_id" %>
   </div>
   <div class="form-group">
     <%= f.label :date, "Date:", class: "control-label" %>

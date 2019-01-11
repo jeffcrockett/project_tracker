@@ -1,6 +1,14 @@
 <div style="height:40px"></div>
 <%= form_for @project do |f| %>
   <div class="form-group">
+    <%= f.label :company_id, "Company:", class: "control-label" %>
+    <%= f.collection_select :company_id, Company.all, :id, :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :distributor_id, "Distributor:", class: "control-label" %>
+    <%= f.collection_select :distributor_id, Distributor.all, :id, :name %>
+  </div>
+  <div class="form-group">
     <%= f.label :name, "Project name:", class: "control-label" %>
     <%= f.text_field :name, class: "form-control" %>
   </div>
@@ -12,10 +20,7 @@
     <%= f.label :notes, "Notes:", class: "control-label" %>
     <%= f.text_field :notes, class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :distributor_id, "Distributor:", class: "control-label" %>
-    <%= f.collection_select :distributor_id, Distributor.all, :id, :name %>
-  </div>
+
   
   <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
 <% end %>

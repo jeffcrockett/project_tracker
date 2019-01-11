@@ -7,6 +7,13 @@ module ApplicationHelper
         end
     end
 
+    def full_shipment_name(s)
+        project_name = full_project_name(Project.find(s.project_id))
+        product_name = Product.find(s.product_id).name
+        date_string = s.date.strftime('%m/%d/%Y')
+        project_name + ': ' + product_name + ': ' + date_string
+    end
+
     def company_name_from_full_name(s)
         s.split(': ')[0]
     end
@@ -115,6 +122,28 @@ module ApplicationHelper
     # Return an array of RegName objects for all registrations, sorted by name
     def registration_list
         Registration.all.map{|r| RegName.new(r)}.sort_by{|r| r.name}
+    end
+
+    class ShipName 
+        include ApplicationHelper
+        def initialize(s)
+            @id = s.id 
+            @name = full_shipment_name(s)
+        end
+        
+        def id 
+            @id
+        end
+
+        def name 
+            @name 
+        end
+    end
+
+
+    # Return an array of shipName objects for all shipments, sorted by name
+    def shipment_list
+        Shipment.all.map{|s| ShipName.new(s)}.sort_by{|s| s.name}
     end
 
 end

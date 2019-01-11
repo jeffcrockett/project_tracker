@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
   belongs_to :distributor
-  validates :name, presence:true, uniqueness:true
+  belongs_to :company
+  validates :name, presence:true
 end
