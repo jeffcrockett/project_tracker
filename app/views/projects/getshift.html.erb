@@ -1,0 +1,12 @@
+<%= render "shared/menu" %>
+<container>
+    <div class="row">
+        <div class="mx-auto">
+        <h1>Shift Shipment Dates</h1><br><br>
+            Days: <input type="number" id="shiftDays"><br><br>
+            Weeks: <input type="number" id="shiftWeeks"><br><br>
+            Months: <input type="number" id="shiftMonths"><br><br>
+            <button id=<%=@project.id%> type="button" class="btn btn-light get-shift">Shift dates</button>
+        </div>
+    </div>
+</container>

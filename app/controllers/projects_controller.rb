@@ -20,6 +20,22 @@ class ProjectsController < ApplicationController
   def edit
     @projects = Project.order(:name)
     @project = Project.find(params[:id])
+    @shipments = helpers.shipments_for_project(params[:id])
+  end
+
+  def getshift
+    @project = Project.find(params[:id])
+    render 'getshift'
+  end
+
+  def doshift
+    @project = Project.find(params[:id])
+    @projects = Project.order(:name)
+    @shipments = helpers.shipments_for_project(params[:id])
+    @shipments.each do |s|
+        s.update_attributes(date: s.date + params[:days].to_i.days + params[:weeks].to_i.weeks + params[:months].to_i.months)
+    end
+    render "edit"
   end
 
   def update

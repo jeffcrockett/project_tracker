@@ -12,11 +12,15 @@ class ShipmentsController < ApplicationController
   def create
     @shipment = Shipment.new(shipment_params)
     if @shipment.save
-      @shipment = Shipment.new
+      @project = @shipment.project
+      @shipments = helpers.shipments_for_project(@shipment.project_id)  
+    #   @shipment = Shipment.new
     end
-    @projects = helpers.project_list
+    # @projects = helpers.project_list
+    @projects = Project.order(:name)
     @products = Product.order(:name)
-    render "new"
+
+    render "projects/edit"
     
   end
 
@@ -29,7 +33,10 @@ class ShipmentsController < ApplicationController
     @shipments = helpers.shipment_list
     @shipment = Shipment.find(params[:id])
     if @shipment.update_attributes(shipment_params)
-      render "index"
+      @projects = Project.order(:name)
+      @project = @shipment.project
+      @shipments = helpers.shipments_for_project(@shipment.project_id)  
+      render "projects/edit"
     else
       render "edit"
     end
@@ -42,12 +49,15 @@ class ShipmentsController < ApplicationController
 
   def destroy
     @shipment = Shipment.find_by id:params[:id]
+    @projects = Project.order(:name)
+    @project = @shipment.project
+    @shipments = helpers.shipments_for_project(@shipment.project_id)  
     if @shipment
       @shipment.destroy()
       @shipment = Shipment.new
     end
-    @shipments = helpers.shipment_list
-    render "markfordeath"
+    # @shipments = helpers.shipment_list
+    render "projects/edit"
   end
 
   private

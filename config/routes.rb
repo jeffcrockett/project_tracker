@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :projects, except: :show
   get 'projects/delete', to: 'projects#markfordeath'
   get 'projects/:id/delete', to: 'projects#destroy'
+  get 'projects/:id/getshift', to: 'projects#getshift'
+  get 'projects/:id/:days/:weeks/:months', to: 'projects#doshift'
   resources :shipments, except: :show
   get 'shipments/delete', to: 'shipments#markfordeath'
   get 'shipments/:id/delete', to: 'shipments#destroy'

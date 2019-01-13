@@ -1,6 +1,11 @@
 require 'set'
 
 module ApplicationHelper
+
+    def shipments_for_project(x)
+        Shipment.where(project_id:x)
+    end
+    
     def full_project_name(p)
         if p.company_id
             Company.find(p.company_id).name + ': ' + p.name

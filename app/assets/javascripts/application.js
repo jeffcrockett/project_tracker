@@ -160,6 +160,38 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
+// Handle a click on the edit shipment button
+$(document).on("turbolinks:load", function () {
+  $(".edit-shipment").on("click", function(e) {
+    window.location = "/shipments/" + e.target.id + "/edit"
+  })
+})
+
+// Handle a click on the delete shipment button
+$(document).on("turbolinks:load", function () {
+  $(".delete-shipment").on("click", function (e) {
+    window.location = "/shipments/" + e.target.id + "/delete"
+  })
+})
+
+// Handle a click on the shift shipment dates button
+$(document).on("turbolinks:load", function () {
+  $(".shift-dates").on("click", function (e) {
+    window.location = "/projects/" + e.target.id + "/getshift"
+  })
+})
+
+// Get values for date shift
+$(document).on("turbolinks:load", function () {
+  $(".get-shift").on("click", function (e) {
+    let id = e.target.id;
+    let days = $("#shiftDays").val() ? $("#shiftDays").val() : "0";
+    let weeks = $("#shiftWeeks").val() ? $("#shiftWeeks").val() : "0";
+    let months = $("#shiftMonths").val() ? $("#shiftMonths").val() : "0";
+    window.location = "/projects/" + id + "/" + days + "/" + weeks + "/" + months  
+  })
+})
+
 // Handle a selection for the Shipment select list
 $(document).on("turbolinks:load", function () {
   $("#ship_select").on("select2:select", function (e) {
