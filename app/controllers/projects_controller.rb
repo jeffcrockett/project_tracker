@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.order(:name)
+    @projects = helpers.project_list
   end
 
   def new
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @projects = Project.order(:name)
+    @projects = helpers.project_list
     @project = Project.find(params[:id])
     @shipments = helpers.shipments_for_project(params[:id])
   end
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
 
   def doshift
     @project = Project.find(params[:id])
-    @projects = Project.order(:name)
+    @projects = helpers.project_list
     @shipments = helpers.shipments_for_project(params[:id])
     @shipments.each do |s|
         s.update_attributes(date: s.date + params[:days].to_i.days + params[:weeks].to_i.weeks + params[:months].to_i.months)
@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @projects = Project.order(:name)
+    @projects = helpers.project_list
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       render "index"
@@ -49,12 +49,12 @@ class ProjectsController < ApplicationController
   end
 
   def markfordeath
-    @projects = Project.order(:name)
+    @projects = helpers.project_list
     @project = Project.new
   end
 
   def destroy
-    @projects = Project.order(:name)
+    @projects = helpers.project_list
     @project = Project.find(params[:id])
     @project.destroy()
     @project = Project.new

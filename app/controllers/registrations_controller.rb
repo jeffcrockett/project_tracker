@@ -40,6 +40,28 @@ class RegistrationsController < ApplicationController
         raise "show"
     end
 
+    #getcompany", "forcompany", "expiration", and "display"
+    def getcompany
+        @companies = Company.all
+        render 'company'
+    end
+
+    def forcompany
+        @companies = Company.all 
+        @company = Company.find(params[:id])
+        @registrations = helpers.regs_for_company(@company.id).sort_by{|reg| reg.expiration}
+        render 'company'
+    end
+
+    def expiration
+        @registrations = Registration.all.sort_by{|reg| reg.expiration}
+        render 'display'
+    end
+
+    def display
+        puts 'hello world!'
+    end
+
     private
 
     def registration_params

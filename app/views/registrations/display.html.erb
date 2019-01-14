@@ -1,0 +1,19 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>Registrations</h1>
+      <h3>(sorted by expiration date)</h3>
+        <% @registrations.each do |reg| %>
+        <hr>
+        <p>Company: <%=reg.project.company.name%></p>
+        <p>Project: <%=reg.project.name%></p>
+        <p>Distributor: <%=reg.project.distributor.name%></p>
+        <p>Expiration: <%=reg.expiration ? reg.expiration : "None given"%></p>
+        <p>Contact: <%=reg.contact%></p>
+        <p>Notes: <%=reg.notes ? reg.notes : "None given"%></p>
+        <% end %>
+    </div>
+  </div>
+</container>

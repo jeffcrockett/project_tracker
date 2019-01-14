@@ -1,0 +1,34 @@
+<%= render "shared/menu" %>
+
+<container>
+  <div class="row">
+    <div class="mx-auto" style="width:300px; padding-top:20px;">
+      <h1>Registrations by Company</h1>
+      <h4 style="padding-top:20px;">Select a Company:</h4>
+      <select id="get_company" class="data-searchable" style="width:300px;">
+        <option value=0></option>
+        <% @companies.each do |c| %>
+          <option value= <%= c.id %> > <%= c.name %> </option>
+        <% end %>
+      </select>
+      <br><br>
+      <button id="get_reg" type="button" class="btn btn-primary">Get registrations</button>
+      <br><br>
+      <% if @company %>
+      <hr>
+      <% if @registrations.empty? %>
+         <h4><%=@company.name%> has no registrations.</h4>
+         <% else %>
+         <h4>Showing registrations for <%=@company.name%></h4>
+      <% end %>
+        <% @registrations.each do |reg| %>
+        <p>Project: <%=reg.project.name%></p>
+        <p>Distributor: <%=reg.project.distributor.name%></p>
+        <p>Expiration: <%=reg.expiration ? reg.expiration : "None given"%></p>
+        <p>Contact: <%=reg.contact%></p>
+        <p>Notes: <%=reg.notes ? reg.notes : "None given"%></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</container>

@@ -240,3 +240,13 @@ $(document).on("turbolinks:load", function () {
     }
   });
 });
+
+// Handle a click on the "Get registrations" button
+$(document).on("turbolinks:load", function () {
+  $("#get_reg").on("click", function (e) {
+    let val = $("#get_company").val();
+    if (val != "0") {
+      window.location = "/registrations/" + val + "/forcompany";
+    }
+  });
+});
