@@ -21,11 +21,15 @@ Rails.application.routes.draw do
   get 'projects/:id/delete', to: 'projects#destroy'
   get 'projects/:id/getshift', to: 'projects#getshift'
   get 'projects/:id/:days/:weeks/:months', to: 'projects#doshift'
+  get 'projects/review', to: 'projects#review'
+  get 'projects/revenue-margin', to: 'projects#revenue_margin'
+  get 'projects/cash-flow', to: 'projects#cash_flow'
+  get 'projects/filter', to: 'projects#filter'
 
   get 'registrations/getcompany', to: 'registrations#getcompany'
   get 'registrations/:id/forcompany', to: 'registrations#forcompany'
   get 'registrations/expiration', to: 'registrations#expiration'
-  
+
   resources :shipments, except: :show
   get 'shipments/delete', to: 'shipments#markfordeath'
   get 'shipments/:id/delete', to: 'shipments#destroy'

@@ -1,0 +1,20 @@
+<%= render "shared/menu"%>
+<container>
+  <div class="row">
+    <div class="col-lg-6" style="padding-top:20px; padding-left:50px;">
+        <%= render "shared/user_preferences"%>
+        
+    </div>
+    <div class="col-lg-6" style="padding-top: 20px;">
+        <% if @start_date && @end_date && @min_confidence && @max_confidence %>
+ <%# Shipments for 1/1/2019 through 1/31/2019
+                   Confidence level 100    (if min and max are different, it will say, e.g 75-100) %>
+        <h3>Shipments for <%= @start_date %> through <%= @end_date %></h3>
+        <h5>Confidence level <%= @min_confidence == @max_confidence ? @max_confidence : @min_confidence.to_s + "-" + @max_confidence.to_s %></h5>
+        <% @full_shipments.each do |ship| %>
+            <p><%= ship[0] %></p>
+        <% end %>
+    </div>
+  </div>
+</container>
+<% end %>

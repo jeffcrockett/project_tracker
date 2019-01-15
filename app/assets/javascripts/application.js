@@ -250,3 +250,13 @@ $(document).on("turbolinks:load", function () {
     }
   });
 });
+
+// Handle a click on the "User preferences" button
+$(document).on("turbolinks:load", function () {
+  $("#user_preferences").submit(function (e) {
+    e.preventDefault();
+    console.log('Submitting...')
+    window.location = "/projects/review";
+    
+  });
+});

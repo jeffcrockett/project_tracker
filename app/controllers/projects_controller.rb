@@ -39,6 +39,19 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    if params[:id] == 'filter'
+        # filter()
+        @start_date = params[:user][:start_date]
+        @end_date = params[:user][:end_date]
+        @min_confidence = params[:user][:min_confidence]
+        @max_confidence = params[:user][:max_confidence]
+        puts 'Start date is ', Date.parse(params[:user][:start_date])
+        puts 's.date is '
+        @shipments = Shipment.select{|s| Date.parse(params[:user][:start_date]) < s.date && s.date < Date.parse(params[:user][:end_date]) && params[:user][:min_confidence].to_i < s.project.confidence && s.project.confidence < params[:user][:max_confidence].to_i}
+        @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
+        render 'review'
+        return 
+    end
     @projects = helpers.project_list
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
@@ -54,11 +67,27 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @projects = helpers.project_list
     @project = Project.find(params[:id])
     @project.destroy()
+    @projects = helpers.project_list
     @project = Project.new
     render "markfordeath"
+  end
+
+  def review
+    render 'review'
+  end
+
+  def revenue_margin
+    render 'revenue-margin'
+  end
+
+  def cash_flow
+    render 'cash-flow'
+  end
+
+  def filter
+    puts 'filtering...'
   end
 
   private
