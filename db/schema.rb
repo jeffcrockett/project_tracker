@@ -75,7 +75,18 @@ ActiveRecord::Schema.define(version: 2019_01_14_205915) do
     t.index ["project_id"], name: "index_shipments_on_project_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'fixnum' for column 'min_confidence'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.boolean "admin"
+    t.boolean "exec"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "min_confidence"
+    t.integer "max_confidence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
+  end
 
 end

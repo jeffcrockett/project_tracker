@@ -1,5 +1,5 @@
 
-         <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'filter') do |f| %> 
+         <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'filter'), method: :get do |f| %> 
             <div class="form-group">
                 <%= f.label :start_date, "Start date:", class: "control-label" %>
                 <%= f.date_field :start_date, class: "form-control", id: "start_date", value: current_user.start_date ||= Date.today.beginning_of_month %>

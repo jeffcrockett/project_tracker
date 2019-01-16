@@ -47,7 +47,8 @@ class ProjectsController < ApplicationController
         @max_confidence = params[:user][:max_confidence]
         puts 'Start date is ', Date.parse(params[:user][:start_date])
         puts 's.date is '
-        @shipments = Shipment.select{|s| Date.parse(params[:user][:start_date]) < s.date && s.date < Date.parse(params[:user][:end_date]) && params[:user][:min_confidence].to_i < s.project.confidence && s.project.confidence < params[:user][:max_confidence].to_i}
+        @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%m/%d/%Y') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%m/%d/%Y') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+        @revenues = @shipments.map{|s| (s.product.price - s.project.distributor.discount) * s.quantity}
         @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
         render 'review'
         return 
@@ -87,7 +88,16 @@ class ProjectsController < ApplicationController
   end
 
   def filter
-    puts 'filtering...'
+    @start_date = params[:user][:start_date]
+    @end_date = params[:user][:end_date]
+    @min_confidence = params[:user][:min_confidence]
+    @max_confidence = params[:user][:max_confidence]
+    puts '@start_date is ', params[:user][:start_date]
+    puts '@end_date is ', params[:user][:end_date]
+    @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+    @revenues = @shipments.map{|s| (s.product.price - s.project.distributor.discount) * s.quantity}
+    @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
+    render 'review'
   end
 
   private

@@ -1,0 +1,9 @@
+<% flash.each do |key, value| %>
+    <% if value.is_a? String %>
+        <div class="alert-<%= key %>"><%= value %></div>
+        <% else %>
+            <% value.each do |v| %>
+            <div class="alert-<%=key%>"><%=v%></div>
+        <% end %>
+    <% end %>
+<% end %>

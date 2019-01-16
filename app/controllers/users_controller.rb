@@ -10,9 +10,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user = User.new
+      helpers.flash_success("User successfully created.")
+
+    
+    else
+      helpers.flash_errors_for(@user)
     end
-    render "new"
+    redirect_to action: "new"
   end
 
   def edit
@@ -21,12 +25,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    @users = User.order(:name)
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      render "index"
+      helpers.flash_success("User updated successfully")
+      redirect_to action: "index"
     else
-      render "edit"
+      helpers.flash_errors_for(@user)
+      redirect_to action:"edit", id: params[:id]
     end
   end
 
@@ -36,13 +41,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @users = User.order(:name)
     @user = User.find(params[:id])
     if @user
         @user.destroy()
-        @user = User.new
+        helpers.flash_success("User successfully deleted")
+    else
+        flash[:danger] = "User to be deleted not found"
     end
-    render "markfordeath"
+    redirect_to action: "markfordeath"
   end
   
 

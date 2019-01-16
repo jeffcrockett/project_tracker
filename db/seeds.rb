@@ -61,7 +61,10 @@ User.create!([
 
 Company.create!([
 {
-  name:"Unknown"
+  name:"CSG"
+},
+{
+  name:"INS"
 },
 {
   name:"Company1"
@@ -296,16 +299,16 @@ Distributor.create!([
 
 Project.create!([
 {
-  company_id:compID("Unknown"),
-  name:"CSG Restock",
+  company_id:compID("CSG"),
+  name:"Restock",
   confidence:100,
   distributor_id:distID("CSG"),
   rep:"Joe Repp",
   application:"Unknown"
 },
 {
-  company_id:compID("Unknown"),
-  name:"INS Restock",
+  company_id:compID("INS"),
+  name:"Restock",
   confidence:100,
   distributor_id:distID("INS"),
   rep:"Jane Repp",
@@ -347,148 +350,148 @@ Project.create!([
 
 Shipment.create!([
 {
-  project_id:projID("Unknown","CSG Restock"),
+  project_id:projID("CSG","Restock"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"01/01/2019"
+  date: "2019/01/01"
 },
 {
-  project_id:projID("Unknown","CSG Restock"),
+  project_id:projID("CSG","Restock"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"01/01/2019"
+  date: "2019/01/01"
 },
 {
-  project_id:projID("Unknown","CSG Restock"),
+  project_id:projID("CSG","Restock"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"02/01/2019"
+  date: "2019/02/01"
 },
 {
-  project_id:projID("Unknown","CSG Restock"),
+  project_id:projID("CSG","Restock"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"02/01/2019"
+  date: "2019/02/01"
 },
 {
-  project_id:projID("Unknown","INS Restock"),
+  project_id:projID("INS","Restock"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"01/02/2019"
+  date: "2019/01/02"
 },
 {
-  project_id:projID("Unknown","INS Restock"),
+  project_id:projID("INS","Restock"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"01/02/2019"
+  date: "2019/01/02"
 },
 {
-  project_id:projID("Unknown","INS Restock"),
+  project_id:projID("INS","Restock"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"02/02/2019"
+  date: "2019/02/02"
 },
 {
-  project_id:projID("Unknown","INS Restock"),
+  project_id:projID("INS","Restock"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"02/02/2019"
+  date: "2019/02/02"
 },
 {
   project_id:projID("Company1","Project1 Trial"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"01/03/2019"
+  date: "2019/01/03"
 },
 {
   project_id:projID("Company1","Project1 Trial"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"01/03/2019"
+  date: "2019/01/03"
 },
 {
   project_id:projID("Company1","Project1 Trial"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"02/03/2019"
+  date: "2019/02/03"
 },
 {
   project_id:projID("Company1","Project1 Trial"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"02/03/2019"
+  date: "2019/02/03"
 },
 {
   project_id:projID("Company1","Project1 Deployment"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"01/04/2019"
+  date: "2019/01/04"
 },
 {
   project_id:projID("Company1","Project1 Deployment"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"01/04/2019"
+  date: "2019/01/04"
 },
 {
   project_id:projID("Company1","Project1 Deployment"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"02/04/2019"
+  date: "2019/02/04"
 },
 {
   project_id:projID("Company1","Project1 Deployment"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"02/04/2019"
+  date: "2019/02/04"
 },
 {
   project_id:projID("Company2","Project1"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"01/05/2019"
+  date: "2019/01/05"
 },
 {
   project_id:projID("Company2","Project1"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"01/05/2019"
+  date: "2019/01/05"
 },
 {
   project_id:projID("Company2","Project1"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"02/05/2019"
+  date: "2019/02/05"
 },
 {
   project_id:projID("Company2","Project1"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"02/05/2019"
+  date: "2019/02/05"
 },
 {
   project_id:projID("Company3","Project1"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"01/06/2019"
+  date: "2019/01/06"
 },
 {
   project_id:projID("Company3","Project1"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"01/06/2019"
+  date: "2019/01/06"
 },
 {
   project_id:projID("Company3","Project1"),
   product_id:prodID("Great Dane"),
   quantity:100,
-  date:"02/06/2019"
+  date: "2019/02/06"
 },
 {
   project_id:projID("Company3","Project1"),
   product_id:prodID("PTA PRO 1S"),
   quantity:100,
-  date:"02/06/2019"
+  date: "2019/02/06"
 }])
 
 

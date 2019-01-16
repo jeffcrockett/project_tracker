@@ -12,7 +12,7 @@
         <h3>Shipments for <%= @start_date %> through <%= @end_date %></h3>
         <h5>Confidence level <%= @min_confidence == @max_confidence ? @max_confidence : @min_confidence.to_s + "-" + @max_confidence.to_s %></h5>
         <% @full_shipments.each do |ship| %>
-            <p><%= ship[0] %></p>
+            <p><%=ship[1].date%> - <%= ship[0] %> - <%= ship[1].product.name%> - <%=ship[1].quantity%></p>
         <% end %>
     </div>
   </div>

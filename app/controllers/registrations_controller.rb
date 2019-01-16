@@ -12,10 +12,13 @@ class RegistrationsController < ApplicationController
     def create
         @registration = Registration.new(registration_params)
         if @registration.save
+            helpers.flash_success("Registration successfully created.")
             @registration = Registration.new
+        else 
+            helpers.flash_errors_for(@registration)
         end
         @projects = helpers.unregistered_project_list
-        render "new"
+        redirect_to action: "new"
     end
 
     def edit
@@ -30,9 +33,9 @@ class RegistrationsController < ApplicationController
         @registrations = helpers.registration_list
         @registration = Registration.find(params[:id])
         if @registration.update_attributes(registration_params)
-            render "index"
+            redirect_to action: "index"
         else
-            render "edit"
+            redirect_to action:"edit", id: params[:id]
         end
     end
 

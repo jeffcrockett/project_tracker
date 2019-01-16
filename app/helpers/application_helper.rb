@@ -2,10 +2,18 @@ require 'set'
 
 module ApplicationHelper
 
+    def flash_errors_for(x)
+        flash[:danger] = x.errors.full_messages
+    end
+
+    def flash_success(msg)
+        flash[:success] = msg
+    end
+
     def shipments_for_project(x)
         Shipment.where(project_id:x)
     end
-    
+
     def full_project_name(p)
         if p.company_id
             Company.find(p.company_id).name + ': ' + p.name
