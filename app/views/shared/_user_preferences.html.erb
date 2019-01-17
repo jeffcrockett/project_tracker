@@ -1,20 +1,19 @@
-
-         <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'filter'), method: :get do |f| %> 
-            <div class="form-group">
-                <%= f.label :start_date, "Start date:", class: "control-label" %>
-                <%= f.date_field :start_date, class: "form-control", id: "start_date", value: current_user.start_date ||= Date.today.beginning_of_month %>
-            </div>
-            <div class="form-group">
-                <%= f.label :end_date, "End date:", class: "control-label" %>
-                <%= f.date_field :end_date, class: "form-control", id: "end_date", value: current_user.end_date ||= Date.today.end_of_month %>
-            </div>
-            <div class="form-group">
-                <%= f.label :min_confidence, "Minimum confidence:", class: "control-label" %>
-                <%= f.number_field :min_confidence, class: "form-control", min: 1, max: 100, value: current_user.min_confidence ||= 100 %>
-            </div>
-            <div class="form-group">
-                <%= f.label :max_confidence, "Maximum confidence:", class: "control-label" %>
-                <%= f.number_field :max_confidence, class: "form-control", min: 1, max: 100, value: current_user.max_confidence ||= 100 %>
-            </div>
-                <%= f.submit "Submit", class: "btn btn-default btn-primary", id: "user-preferences" %>
-            <% end %> 
+<%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'filter'), method: :get do |f| %> 
+    <div class="form-group">
+        <%= f.label :start_date, "Start date:", class: "control-label" %>
+        <%= f.date_field :start_date, class: "form-control", id: "start_date", value: current_user.start_date ||= Date.today.beginning_of_month %>
+    </div>
+    <div class="form-group">
+        <%= f.label :end_date, "End date:", class: "control-label" %>
+        <%= f.date_field :end_date, class: "form-control", id: "end_date", value: current_user.end_date ||= Date.today.end_of_month %>
+    </div>
+    <div class="form-group">
+        <%= f.label :min_confidence, "Minimum confidence:", class: "control-label" %>
+        <%= f.number_field :min_confidence, class: "form-control", min: 1, max: 100, value: current_user.min_confidence ||= 100 %>
+    </div>
+    <div class="form-group">
+        <%= f.label :max_confidence, "Maximum confidence:", class: "control-label" %>
+        <%= f.number_field :max_confidence, class: "form-control", min: 1, max: 100, value: current_user.max_confidence ||= 100 %>
+    </div>
+        <%= f.submit "Submit", class: "btn btn-default btn-primary", id: "user-preferences" %>
+<% end %> 

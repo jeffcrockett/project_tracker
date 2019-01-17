@@ -80,11 +80,31 @@ class ProjectsController < ApplicationController
   end
 
   def revenue_margin
+    if params[:commit]
+      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+      @results_hash = {}
+      @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
+      @revenues_and_margins.each do |x| 
+        @results_hash[x[0]] = {:revenue => [], :margin => []}
+      end
+      @revenues_and_margins.each do |x|
+        @results_hash[x[0]][:revenue] << x[1]
+        @results_hash[x[0]][:margin] << x[2]
+      end
+      @results_hash.keys.each do |key|
+        @results_hash[key][:total_revenue] = helpers.sum_of(@results_hash[key][:revenue])
+        @results_hash[key][:total_margin] = helpers.sum_of(@results_hash[key][:margin])
+      end
     # render 'revenue-margin'
+    end
   end
 
   def cash_flow
+    if params[:commit]
+      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+      @cash_flow = helpers.cash_flow_for(@shipments)
     # render 'cash-flow'
+    end
   end
 
   def filter

@@ -2,7 +2,26 @@
 <container>
   <div class="row">
     <div class="col-lg-6" style="padding-top:20px; padding-left:50px;">
-        <%= render "shared/user_preferences"%>
+        <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'filter'), method: :get do |f| %> 
+    <div class="form-group">
+        <%= f.label :start_date, "Start date:", class: "control-label" %>
+        <%= f.date_field :start_date, class: "form-control", id: "start_date", value: current_user.start_date ||= Date.today.beginning_of_month %>
+    </div>
+    <div class="form-group">
+        <%= f.label :end_date, "End date:", class: "control-label" %>
+        <%= f.date_field :end_date, class: "form-control", id: "end_date", value: current_user.end_date ||= Date.today.end_of_month %>
+    </div>
+    <div class="form-group">
+        <%= f.label :min_confidence, "Minimum confidence:", class: "control-label" %>
+        <%= f.number_field :min_confidence, class: "form-control", min: 1, max: 100, value: current_user.min_confidence ||= 100 %>
+    </div>
+    <div class="form-group">
+        <%= f.label :max_confidence, "Maximum confidence:", class: "control-label" %>
+        <%= f.number_field :max_confidence, class: "form-control", min: 1, max: 100, value: current_user.max_confidence ||= 100 %>
+    </div>
+        <%= f.submit "Submit", class: "btn btn-default btn-primary", id: "user-preferences" %>
+<% end %> 
+
         
     </div>
     <div class="col-lg-6" style="padding-top: 20px;">
@@ -14,48 +33,8 @@
         <% @full_shipments.each do |ship| %>
             <p><%=ship[1].date%> - <%= ship[0] %> - <%= ship[1].product.name%> - <%=ship[1].quantity%></p>
         <% end %>
-         <table style="border: 1px solid black;">
-      <% @results_hash.keys.each do |key| %>
-        <tr>
-          <th><%= key %></th>
-          <td>
-            <table>
-              <tr>
-                <th>Revenue</th>
-                <% @results_hash[key][:revenue].each do |amount| %>
-                <td><%= amount %></td>
-                <% end %>
-                <th><%= @results_hash[key][:total_revenue] %></th>
-              </tr>
-              <tr>
-                <th>Margin</th>
-                <% @results_hash[key][:margin].each do |amount| %>
-                <td><%= amount %></td>
-                <% end %>
-                <th><%= @results_hash[key][:total_margin] %></th>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      <% end %>
-      </table>
-    <table style="border: 1px solid black;">
-      <tr>
-        <th>Date</th>
-        <th>Net Cash Flow</th>
-        <th>Cumulative Cash Flow</th>
-        <th>Shipment Description</th>
-      </tr>
-      <% @cash_flow.each do |row| %>
-      <tr>
-        <td><%= row[0] %></td>
-        <td><%= row[1] %></td>
-        <td><%= row[2] %></td>
-        <td><%= row[3] %></td>
-      <tr>
-      <% end %>
+       
 
-      </table>
     </div>
   </div>
 </container>
