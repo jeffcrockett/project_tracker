@@ -2,6 +2,19 @@ require 'set'
 
 module ApplicationHelper
 
+    def cash_flow_for(shipments)
+        master_array = []
+        cash_flow_array = []
+        shipments.each do |shipment|
+            positive_cash_flow = Shipment.all.select{|s| (shipment.date - 30).upto(shipment.date).include? s.date}.map{|s| revenue_from(s)}.reduce(:+)
+            negative_cash_flow = Shipment.all.select{|s| (shipment.date + 30).downto(shipment.date).include? s.date}.map{|s| s.product.cogs * s.quantity}.reduce(:+)
+            cash_flow_array << (positive_cash_flow - negative_cash_flow)
+            master_array << [shipment.date, (positive_cash_flow - negative_cash_flow), cash_flow_array.reduce(:+), full_shipment_name_minus_date(shipment)]
+        end
+        master_array
+        # cash_flow_array.map{|num| num.to_f}
+    end
+
     def flash_errors_for(x)
         flash[:danger] = x.errors.full_messages
     end
@@ -25,6 +38,10 @@ module ApplicationHelper
         product_name = Product.find(s.product_id).name
         date_string = s.date.strftime('%m/%d/%Y')
         project_name + ': ' + product_name + ': ' + date_string
+    end
+
+    def full_shipment_name_minus_date(s)
+        full_shipment_name(s).split(': ')[0..-2].join(': ')
     end
 
     def company_name_from_full_name(s)
@@ -71,6 +88,24 @@ module ApplicationHelper
     # expiration date
     def regs_by_expiration(regs=Registration.all)
         regs.sort_by{|r| r.expiration}
+    end
+
+    # Given a shipment, calculate revenue
+    def revenue_from(shipment)
+        (shipment.product.price * ((shipment.project.distributor.discount - 100)/-100.0)) * shipment.quantity
+    end
+
+    # Given a shipment, calculate margin
+    def margin_from(shipment)
+        revenue_from(shipment) - (shipment.product.cogs * shipment.quantity)
+    end
+
+    def sum_of(number_array)
+        sum = 0
+        number_array.each do |num|
+            sum += num
+        end
+        sum
     end
 
     # Projects have a name, but they belong to a Company, and for many

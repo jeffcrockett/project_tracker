@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     if @project.save
       @project = Project.new
     end
-    render "new"
+    redirect_to action: "new"
   end
 
   def edit
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
   def getshift
     @project = Project.find(params[:id])
-    render 'getshift'
+    # render 'getshift'
   end
 
   def doshift
@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
     @shipments.each do |s|
         s.update_attributes(date: s.date + params[:days].to_i.days + params[:weeks].to_i.weeks + params[:months].to_i.months)
     end
-    render "edit"
+    redirect_to action:"edit"
   end
 
   def update
@@ -50,15 +50,15 @@ class ProjectsController < ApplicationController
         @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%m/%d/%Y') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%m/%d/%Y') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
         @revenues = @shipments.map{|s| (s.product.price - s.project.distributor.discount) * s.quantity}
         @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
-        render 'review'
+        redirect_to action:"review"
         return 
     end
     @projects = helpers.project_list
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
-      render "index"
+      redirect_to action:"index"
     else
-      render "edit"
+      redirect_to action:"edit", id: params[:id]
     end
   end
 
@@ -72,19 +72,19 @@ class ProjectsController < ApplicationController
     @project.destroy()
     @projects = helpers.project_list
     @project = Project.new
-    render "markfordeath"
+    redirect_to action:"markfordeath"
   end
 
   def review
-    render 'review'
+    # render 'review'
   end
 
   def revenue_margin
-    render 'revenue-margin'
+    # render 'revenue-margin'
   end
 
   def cash_flow
-    render 'cash-flow'
+    # render 'cash-flow'
   end
 
   def filter
@@ -95,7 +95,20 @@ class ProjectsController < ApplicationController
     puts '@start_date is ', params[:user][:start_date]
     puts '@end_date is ', params[:user][:end_date]
     @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
-    @revenues = @shipments.map{|s| (s.product.price - s.project.distributor.discount) * s.quantity}
+    @results_hash = {}
+    @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
+    @revenues_and_margins.each do |x| 
+      @results_hash[x[0]] = {:revenue => [], :margin => []}
+    end
+    @revenues_and_margins.each do |x|
+      @results_hash[x[0]][:revenue] << x[1]
+      @results_hash[x[0]][:margin] << x[2]
+    end
+    @results_hash.keys.each do |key|
+      @results_hash[key][:total_revenue] = helpers.sum_of(@results_hash[key][:revenue])
+      @results_hash[key][:total_margin] = helpers.sum_of(@results_hash[key][:margin])
+    end
+    @cash_flow = helpers.cash_flow_for(@shipments)
     @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
     render 'review'
   end

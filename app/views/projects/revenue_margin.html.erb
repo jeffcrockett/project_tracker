@@ -1,0 +1,35 @@
+<%= render "shared/menu"%>
+<container>
+  <div class="row">
+    <div class="col-lg-6" style="padding-top:20px; padding-left:50px;">
+        <%= render "shared/user_preferences"%>
+    </div>
+    <div class="col-lg-6" style="padding-top: 20px;">
+      <table>
+      <% @results_hash.keys.each do |key| %>
+        <tr>
+          <th><%= key %></th>
+          <td>
+            <table>
+              <tr>
+                <th>Revenue</th>
+                <% @results_hash[key][:revenue].each do |amount| %>
+                <td><%= amount %></td>
+                <% end %>
+                <th><%= @results_hash[key][:total_revenue] %></th>
+              </tr>
+              <tr>
+                <th>Margin</th>
+                <% @results_hash[key][:margin].each do |amount| %>
+                <td><%= amount %></td>
+                <% end %>
+                <th><%= @results_hash[key][:total_margin] %></th>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</container>

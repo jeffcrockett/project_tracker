@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   get 'projects/:id/getshift', to: 'projects#getshift'
   get 'projects/:id/:days/:weeks/:months', to: 'projects#doshift'
   get 'projects/review', to: 'projects#review'
-  get 'projects/revenue-margin', to: 'projects#revenue_margin'
-  get 'projects/cash-flow', to: 'projects#cash_flow'
+  get 'projects/revenue_margin', to: 'projects#revenue_margin'
+  get 'projects/cash_flow', to: 'projects#cash_flow'
   get 'projects/filter', to: 'projects#filter'
 
   get 'registrations/getcompany', to: 'registrations#getcompany'
