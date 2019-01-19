@@ -2,18 +2,24 @@ require 'set'
 
 module ApplicationHelper
 
-    def cash_flow_for(shipments)
-        master_array = []
-        cash_flow_array = []
-        shipments.each do |shipment|
-            positive_cash_flow = Shipment.all.select{|s| (shipment.date - 30).upto(shipment.date).include? s.date}.map{|s| revenue_from(s)}.reduce(:+)
-            negative_cash_flow = Shipment.all.select{|s| (shipment.date + 30).downto(shipment.date).include? s.date}.map{|s| s.product.cogs * s.quantity}.reduce(:+)
-            cash_flow_array << (positive_cash_flow - negative_cash_flow)
-            master_array << [shipment.date, (positive_cash_flow - negative_cash_flow), cash_flow_array.reduce(:+), full_shipment_name_minus_date(shipment)]
-        end
-        master_array
-        # cash_flow_array.map{|num| num.to_f}
+    # def cash_flow_for(shipments, start_date, end_date)
+    #     master_array = []
+    #     cash_flow_array = []
+    #     shipments.each do |shipment|
+    #         positive_cash_flow = Shipment.all.select{|s| (start_date - 30).upto(end_date - 30).include? s.date}.map{|s| revenue_from(s)}.reduce(:+)
+    #         negative_cash_flow = Shipment.all.select{|s| (start_date + 30).upto(end_date + 30).include? s.date}.map{|s| s.product.cogs * s.quantity}.reduce(:+)
+    #         cash_flow_array << (positive_cash_flow - negative_cash_flow)
+    #         master_array << [shipment.date, (positive_cash_flow - negative_cash_flow), cash_flow_array.reduce(:+), full_shipment_name_minus_date(shipment)]
+    #     end
+    #     master_array
+    #     # cash_flow_array.map{|num| num.to_f}
+    # end
+
+    def cost_of(shipment)
+        (shipment.product.cogs * shipment.quantity).to_f
     end
+
+    
 
     def flash_errors_for(x)
         flash[:danger] = x.errors.full_messages

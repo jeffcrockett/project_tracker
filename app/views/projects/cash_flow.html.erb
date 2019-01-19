@@ -1,7 +1,8 @@
 <%= render "shared/menu"%>
 <container>
   <div class="row">
-    <div class="col-lg-6" style="padding-top:20px; padding-left:50px;">
+    <div class="col-lg-4" style="padding-top:20px">
+    <div class="mx-auto" style="width:300px;">
         <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'cash_flow'), method: :get do |f| %> 
     <div class="form-group">
         <%= f.label :start_date, "Start date:", class: "control-label" %>
@@ -21,28 +22,30 @@
     </div>
         <%= f.submit "Submit", class: "btn btn-default btn-primary", id: "user-preferences" %>
 <% end %> 
-
     </div>
-    <div class="col-lg-6" style="padding-top: 20px;">
-    <% if @cash_flow %>
+    </div>
+    <div class="col-lg-8" style="padding-top: 20px;">
+    <div class="mx-auto" style="width:600px;">
+    <% if @flow_hash %>
       <table>
         <tr>
           <th>Date</th>
           <th>Net Cash Flow</th>
-          <th>Cumulative Cash Flow</th>
-          <th>Shipment Description</th>
+          <th style="padding-left:10px;">Cumulative Cash Flow</th>
         </tr>
-        <% @cash_flow.each do |row| %>
+        <% @flow_hash.keys.each do |key|  %>
+          <% if @flow_hash[key] != 0%>
         <tr>
-          <td><%= row[0] %></td>
-          <td><%= row[1] %></td>
-          <td><%= row[2] %></td>
-          <td><%= row[3] %></td>
+          <td><%= key %></td>
+          <td style="text-align: right;"><%= number_with_delimiter(@flow_hash[key], :delimiter => ',')  %></td>
+          <td style="text-align: right;"><%= number_with_delimiter(@cumulative_cash_flow += @flow_hash[key], :delimiter => ',') %></td>
         <tr>
+        <% end %>
         <% end %>
 
         </table>
     <% end %>
+    </div>
     </div>
   </div>
 </container>

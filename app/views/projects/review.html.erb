@@ -1,7 +1,8 @@
 <%= render "shared/menu"%>
 <container>
   <div class="row">
-    <div class="col-lg-6" style="padding-top:20px; padding-left:50px;">
+    <div class="col-lg-4" style="padding-top:20px">
+    <div class="mx-auto" style="width:300px;">
         <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'filter'), method: :get do |f| %> 
     <div class="form-group">
         <%= f.label :start_date, "Start date:", class: "control-label" %>
@@ -22,9 +23,10 @@
         <%= f.submit "Submit", class: "btn btn-default btn-primary", id: "user-preferences" %>
 <% end %> 
 
-        
+     </div>   
     </div>
-    <div class="col-lg-6" style="padding-top: 20px;">
+    <div class="col-lg-8" style="padding-top: 20px;">
+    <div class="mx-auto" style="width:600px;">
         <% if @start_date && @end_date && @min_confidence && @max_confidence %>
  <%# Shipments for 1/1/2019 through 1/31/2019
                    Confidence level 100    (if min and max are different, it will say, e.g 75-100) %>
@@ -34,7 +36,7 @@
             <p><%=ship[1].date%> - <%= ship[0] %> - <%= ship[1].product.name%> - <%=ship[1].quantity%></p>
         <% end %>
        
-
+    </div>
     </div>
   </div>
 </container>

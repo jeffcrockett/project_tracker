@@ -1,7 +1,8 @@
 <%= render "shared/menu"%>
 <container>
   <div class="row">
-    <div class="col-lg-6" style="padding-top:20px; padding-left:50px;">
+    <div class="col-lg-4" style="padding-top:20px">
+    <div class="mx-auto" style="width:300px;">
         <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'revenue_margin'), method: :get do |f| %> 
     <div class="form-group">
         <%= f.label :start_date, "Start date:", class: "control-label" %>
@@ -21,36 +22,27 @@
     </div>
         <%= f.submit "Submit", class: "btn btn-default btn-primary", id: "user-preferences" %>
 <% end %> 
-
     </div>
-    <div class="col-lg-6" style="padding-top: 20px;">
-      <% if @results_hash %>
-         <table>
-      <% @results_hash.keys.each do |key| %>
+    </div>
+    <div class="col-lg-8" style="padding-top: 20px;">
+    <div class="mx-auto" style="width:600px;">
+      <% if @results_hash %> 
+      <table>
         <tr>
-          <th><%= key %></th>
-          <td>
-            <table>
-              <tr>
-                <th>Revenue</th>
-                <% @results_hash[key][:revenue].each do |amount| %>
-                <td><%= amount %></td>
-                <% end %>
-                <th><%= @results_hash[key][:total_revenue] %></th>
-              </tr>
-              <tr>
-                <th>Margin</th>
-                <% @results_hash[key][:margin].each do |amount| %>
-                <td><%= amount %></td>
-                <% end %>
-                <th><%= @results_hash[key][:total_margin] %></th>
-              </tr>
-            </table>
-          </td>
+          <th style="padding:0px;">Product</th>
+          <th style="text-align:center;">Revenue</th>
+          <th style="text-align:center;">Margin</th>
         </tr>
-      <% end %>
+        <% @updated_results_hash.keys.each do |key| %>
+        <tr>
+          <td style="padding:0px;"><%= key %></td>
+          <td style="text-align: right; padding:50px;"><%= number_with_delimiter(@updated_results_hash[key][:Revenue], :delimiter => ',') %></td>
+          <td style="text-align: right; padding:50px;"><%= number_with_delimiter(@updated_results_hash[key][:Margin], :delimiter => ',') %></td>
+        </tr>
+        <% end %>
       </table>
       <% end %>
+      </div>
     </div>
   </div>
 </container>
