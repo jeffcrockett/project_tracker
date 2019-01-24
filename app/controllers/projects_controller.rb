@@ -39,21 +39,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if params[:id] == 'filter'
-        # filter()
-        current_user.update_attributes(user_params)
-        @start_date = params[:user][:start_date]
-        @end_date = params[:user][:end_date]
-        @min_confidence = params[:user][:min_confidence]
-        @max_confidence = params[:user][:max_confidence]
-        puts 'Start date is ', Date.parse(params[:user][:start_date])
-        puts 's.date is '
-        @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%m/%d/%Y') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%m/%d/%Y') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
-        @revenues = @shipments.map{|s| (s.product.price - s.project.distributor.discount) * s.quantity}
-        @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
-        redirect_to action:"review"
-        return 
-    end
     @projects = helpers.project_list
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
@@ -77,12 +62,35 @@ class ProjectsController < ApplicationController
   end
 
   def review
-    # render 'review'
+    if params[:commit]
+      current_user.update_attributes(user_params)
+      @start_date = params[:user][:start_date]
+      @end_date = params[:user][:end_date]
+      @min_confidence = params[:user][:min_confidence]
+      @max_confidence = params[:user][:max_confidence]
+      puts '@start_date is ', params[:user][:start_date]
+      puts '@end_date is ', params[:user][:end_date]
+      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%m-%d-%Y') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%m-%d-%Y') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+      @results_hash = {}
+      @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
+      @revenues_and_margins.each do |x| 
+        @results_hash[x[0]] = {:revenue => [], :margin => []}
+      end
+      @revenues_and_margins.each do |x|
+        @results_hash[x[0]][:revenue] << x[1]
+        @results_hash[x[0]][:margin] << x[2]
+      end
+      @results_hash.keys.each do |key|
+        @results_hash[key][:total_revenue] = helpers.sum_of(@results_hash[key][:revenue])
+        @results_hash[key][:total_margin] = helpers.sum_of(@results_hash[key][:margin])
+      end
+      @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
+    end
   end
 
   def revenue_margin
     if params[:commit]
-      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%m-%d-%Y') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%m-%d-%Y') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @results_hash = {}
       @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
       @updated_revenues_and_margins = 
@@ -114,8 +122,8 @@ class ProjectsController < ApplicationController
   def cash_flow
     if params[:commit]
       current_user.update_attributes(user_params)
-      @start_date = Date.strptime(params[:user][:start_date], '%Y-%m-%d')
-      @end_date = Date.strptime(params[:user][:end_date], '%Y-%m-%d')
+      @start_date = Date.strptime(params[:user][:start_date], '%m-%d-%Y')
+      @end_date = Date.strptime(params[:user][:end_date], '%m-%d-%Y')
       @rev_shipments = Shipment.select{|s| (@start_date - 30) <= s.date && s.date <= (@end_date - 30) && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @cost_shipments = Shipment.select{|s| (@start_date + 30) <= s.date && s.date <= (@end_date + 30) && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @flow_hash = {}
@@ -136,33 +144,6 @@ class ProjectsController < ApplicationController
       # @cash_flow = helpers.cash_flow_for(@shipments, Date.strptime(params[:user][:start_date]), Date.strptime(params[:user][:end_date]))
     # render 'cash-flow'
     end
-  end
-
-  def filter
-    current_user.update_attributes(user_params)
-    @start_date = params[:user][:start_date]
-    @end_date = params[:user][:end_date]
-    @min_confidence = params[:user][:min_confidence]
-    @max_confidence = params[:user][:max_confidence]
-    puts '@start_date is ', params[:user][:start_date]
-    puts '@end_date is ', params[:user][:end_date]
-    @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
-    @results_hash = {}
-    @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
-    @revenues_and_margins.each do |x| 
-      @results_hash[x[0]] = {:revenue => [], :margin => []}
-    end
-    @revenues_and_margins.each do |x|
-      @results_hash[x[0]][:revenue] << x[1]
-      @results_hash[x[0]][:margin] << x[2]
-    end
-    @results_hash.keys.each do |key|
-      @results_hash[key][:total_revenue] = helpers.sum_of(@results_hash[key][:revenue])
-      @results_hash[key][:total_margin] = helpers.sum_of(@results_hash[key][:margin])
-    end
-    @cash_flow = helpers.cash_flow_for(@shipments)
-    @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
-    render 'review'
   end
 
   private

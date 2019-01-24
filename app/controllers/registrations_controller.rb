@@ -57,7 +57,14 @@ class RegistrationsController < ApplicationController
     end
 
     def expiration
-        @registrations = Registration.all.sort_by{|reg| reg.expiration}
+        puts Registration.all.map{|r| r.expiration}
+        non_nil_dates = Registration.all.find_all{|reg| reg.expiration}
+        nil_dates = Registration.all.find_all{|reg| !reg.expiration}.sort_by{|reg| reg.expiration}
+        nil_dates.each do |reg|
+            non_nil_dates << reg
+        end
+        @registrations = non_nil_dates
+        # @registrations = Registration.all.sort_by{|reg| reg.expiration}
         render 'display'
     end
 
