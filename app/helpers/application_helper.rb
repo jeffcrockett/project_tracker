@@ -114,6 +114,12 @@ module ApplicationHelper
         sum
     end
 
+    #converts registration expiration date from Y-M-D to M-D-Y
+    def reformatted(date)
+        expiration_array = date.to_s.split('-')
+        reformatted_expiration_array = expiration_array[1..2] << expiration_array[0]
+        reformatted_expiration_array.join('-')
+    end
     # Projects have a name, but they belong to a Company, and for many
     # purposes the user sees the "full" project name which is the
     # Company name followed by the project name.

@@ -1,5 +1,6 @@
 <%= render "shared/menu"%>
 <container>
+<h3 style="text-align:center;">Shipments For Selected Time and Projects</h3>
   <div class="row">
     <div class="col-lg-4" style="padding-top:20px">
     <div class="mx-auto" style="width:300px;">
@@ -30,10 +31,10 @@
         <% if @start_date && @end_date && @min_confidence && @max_confidence %>
  <%# Shipments for 1/1/2019 through 1/31/2019
                    Confidence level 100    (if min and max are different, it will say, e.g 75-100) %>
-        <h3>Shipments for <%= @start_date %> through <%= @end_date %></h3>
+        
         <h5>Confidence level <%= @min_confidence == @max_confidence ? @max_confidence : @min_confidence.to_s + "-" + @max_confidence.to_s %></h5>
         <% @full_shipments.each do |ship| %>
-            <p><%=ship[1].date%> - <%= ship[0] %> - <%= ship[1].product.name%> - <%=ship[1].quantity%></p>
+            <p><%=ship[1].date.strftime('%m/%d/%Y')%> - <%= ship[0] %> - <%= ship[1].product.name%> - <%=ship[1].quantity%></p>
         <% end %>
        
     </div>

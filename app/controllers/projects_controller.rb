@@ -63,14 +63,17 @@ class ProjectsController < ApplicationController
 
   def review
     if params[:commit]
+      puts 'params[:user][:start_date] is', params[:user][:start_date]
+      puts 'params[:user][:end_date] is', params[:user][:end_date]
+      
       current_user.update_attributes(user_params)
-      @start_date = params[:user][:start_date]
-      @end_date = params[:user][:end_date]
+      @start_date = Date.strptime(params[:user][:start_date], '%Y-%m-%d')
+      @end_date = Date.strptime(params[:user][:end_date], '%Y-%m-%d')
       @min_confidence = params[:user][:min_confidence]
       @max_confidence = params[:user][:max_confidence]
       puts '@start_date is ', params[:user][:start_date]
       puts '@end_date is ', params[:user][:end_date]
-      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%m-%d-%Y') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%m-%d-%Y') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @results_hash = {}
       @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
       @revenues_and_margins.each do |x| 
@@ -90,7 +93,7 @@ class ProjectsController < ApplicationController
 
   def revenue_margin
     if params[:commit]
-      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%m-%d-%Y') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%m-%d-%Y') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
+      @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @results_hash = {}
       @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
       @updated_revenues_and_margins = 
@@ -122,8 +125,8 @@ class ProjectsController < ApplicationController
   def cash_flow
     if params[:commit]
       current_user.update_attributes(user_params)
-      @start_date = Date.strptime(params[:user][:start_date], '%m-%d-%Y')
-      @end_date = Date.strptime(params[:user][:end_date], '%m-%d-%Y')
+      @start_date = Date.strptime(params[:user][:start_date], '%Y-%m-%d')
+      @end_date = Date.strptime(params[:user][:end_date], '%Y-%m-%d')
       @rev_shipments = Shipment.select{|s| (@start_date - 30) <= s.date && s.date <= (@end_date - 30) && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @cost_shipments = Shipment.select{|s| (@start_date + 30) <= s.date && s.date <= (@end_date + 30) && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @flow_hash = {}
