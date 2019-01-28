@@ -12,8 +12,6 @@
         <% end %>
       </select>
       <br><br>
-      <button id="get_reg" type="button" class="btn btn-primary">Get registrations</button>
-      <br><br>
       <% if @company %>
       <hr>
       <% if @registrations.empty? %>
@@ -22,11 +20,12 @@
          <h4>Showing registrations for <%=@company.name%></h4>
       <% end %>
         <% @registrations.each do |reg| %>
-        <p>Project: <%=reg.project.name%></p>
-        <p>Distributor: <%=reg.project.distributor.name%></p>
-        <p>Expiration: <%=reg.expiration ? reg.expiration.strftime('%m/%d/%Y') : "None given"%></p>
-        <p>Contact: <%=reg.contact%></p>
-        <p>Notes: <%=reg.notes ? reg.notes : "None given"%></p>
+        <hr>
+        <%=reg.project.company.name%>: <%=reg.project.name%><br>
+        Distributor: <%=reg.project.distributor.name%><br>
+        Expiration: <%=reg.expiration ? reg.expiration.strftime('%m/%d/%Y') : "None given" %><br>
+        Contact: <%=reg.contact%><br>
+        Notes: <%=reg.notes%><br>
         <% end %>
       <% end %>
     </div>

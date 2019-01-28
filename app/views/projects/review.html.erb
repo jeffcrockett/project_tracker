@@ -29,12 +29,18 @@
     <div class="col-lg-8" style="padding-top: 20px;">
     <div class="mx-auto" style="width:600px;">
         <% if @start_date && @end_date && @min_confidence && @max_confidence %>
- <%# Shipments for 1/1/2019 through 1/31/2019
-                   Confidence level 100    (if min and max are different, it will say, e.g 75-100) %>
-        
-        <h5>Confidence level <%= @min_confidence == @max_confidence ? @max_confidence : @min_confidence.to_s + "-" + @max_confidence.to_s %></h5>
+        <table>
+          <tr>
+            <th style="padding:0px;">Date</th>
+            <th style="padding-left:20px;">Product</th>
+            <th style="text-align:right;">Quantity</th>
+            <th style="padding-left:20px;">Project</th>
         <% @full_shipments.each do |ship| %>
-            <p><%=ship[1].date.strftime('%m/%d/%Y')%> - <%= ship[0] %> - <%= ship[1].product.name%> - <%=ship[1].quantity%></p>
+          <tr>
+            <td style="padding:0px;"><%=ship[1].date.strftime('%m/%d/%Y')%> </td>
+            <td style="padding-left:20px;"><%= ship[1].product.name%></td>
+            <td style="text-align:right;"><%=ship[1].quantity%></td>
+            <td style="padding-left:20px;"><%= ship[0] %></td>
         <% end %>
        
     </div>

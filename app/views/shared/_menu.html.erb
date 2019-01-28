@@ -34,8 +34,6 @@
           <a class="dropdown-item" href="/projects/review">Shipments</a>
           <a class="dropdown-item" href="/projects/revenue_margin">Revenue and Margin</a>
           <a class="dropdown-item" href="/projects/cash_flow">Cash Flow</a>
-          <a class="dropdown-item" href="/registrations/getcompany">View Registrations by Company</a>
-          <a class="dropdown-item" href="/registrations/expiration">View Registrations by Expiration</a>
 
         </div>
 
@@ -67,23 +65,8 @@
           <a class="dropdown-item" href="/registrations/new">New</a>
           <a class="dropdown-item" href="/registrations">View/Edit</a>
           <a class="dropdown-item" href="/registrations/delete">Delete</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <span class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">
-          Shipment
-        </span>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/shipments/new">New</a>
-          <a class="dropdown-item" href="/shipments">View/Edit</a>
-          <a class="dropdown-item" href="/shipments/delete">Delete</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/reports/status">Status</a>
-          <a class="dropdown-item" href="/reports/cashflow">Cash Flow</a>
-          <a class="dropdown-item" href="/reports/registrations">Registrations</a>
+          <a class="dropdown-item" href="/registrations/getcompany">View by Company</a>
+          <a class="dropdown-item" href="/registrations/expiration">View by Expiration</a>
         </div>
       </li>
       <%if current_user.admin%>

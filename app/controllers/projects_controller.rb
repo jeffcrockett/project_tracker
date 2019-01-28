@@ -63,30 +63,13 @@ class ProjectsController < ApplicationController
 
   def review
     if params[:commit]
-      puts 'params[:user][:start_date] is', params[:user][:start_date]
-      puts 'params[:user][:end_date] is', params[:user][:end_date]
-      
       current_user.update_attributes(user_params)
       @start_date = Date.strptime(params[:user][:start_date], '%Y-%m-%d')
       @end_date = Date.strptime(params[:user][:end_date], '%Y-%m-%d')
       @min_confidence = params[:user][:min_confidence]
       @max_confidence = params[:user][:max_confidence]
-      puts '@start_date is ', params[:user][:start_date]
-      puts '@end_date is ', params[:user][:end_date]
       @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
-      @results_hash = {}
-      @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
-      @revenues_and_margins.each do |x| 
-        @results_hash[x[0]] = {:revenue => [], :margin => []}
-      end
-      @revenues_and_margins.each do |x|
-        @results_hash[x[0]][:revenue] << x[1]
-        @results_hash[x[0]][:margin] << x[2]
-      end
-      @results_hash.keys.each do |key|
-        @results_hash[key][:total_revenue] = helpers.sum_of(@results_hash[key][:revenue])
-        @results_hash[key][:total_margin] = helpers.sum_of(@results_hash[key][:margin])
-      end
+      @shipments = @shipments.sort_by { |a| [a.date, a.product.name] }
       @full_shipments = @shipments.map{|s| [helpers.full_project_name(s.project), s]}
     end
   end
@@ -96,7 +79,6 @@ class ProjectsController < ApplicationController
       @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
       @results_hash = {}
       @revenues_and_margins = @shipments.map{|s| [s.product.name, helpers.revenue_from(s).to_f, helpers.margin_from(s).to_f]}
-      @updated_revenues_and_margins = 
       @revenues_and_margins.each do |x| 
         @results_hash[x[0]] = {:Revenue => [], :Margin => []}
       end
@@ -104,12 +86,7 @@ class ProjectsController < ApplicationController
         @results_hash[x[0]][:Revenue] << x[1]
         @results_hash[x[0]][:Margin] << x[2]
       end
-      # @results_hash.keys.each do |key|
-      #   @results_hash[key][:total_revenue] = helpers.sum_of(@results_hash[key][:Revenue])
-      #   @results_hash[key][:total_margin] = helpers.sum_of(@results_hash[key][:Margin])
-      # end
       @updated_results_hash = {}
-      puts @results_hash
       @results_hash.keys.each do |key|
         @updated_results_hash[key] = {}
         @results_hash[key].keys.each do |key2|
@@ -117,8 +94,6 @@ class ProjectsController < ApplicationController
         end
       end
 
-      puts @updated_results_hash
-    # render 'revenue-margin'
     end
   end
 
@@ -142,10 +117,6 @@ class ProjectsController < ApplicationController
         cost = helpers.cost_of(s)
         @flow_hash[s.date-30] -= cost
       end
-
-      # @shipments = Shipment.select{|s| Date.strptime(params[:user][:start_date], '%Y-%m-%d') <= s.date && s.date <= Date.strptime(params[:user][:end_date], '%Y-%m-%d') && params[:user][:min_confidence].to_i <= s.project.confidence && s.project.confidence <= params[:user][:max_confidence].to_i}
-      # @cash_flow = helpers.cash_flow_for(@shipments, Date.strptime(params[:user][:start_date]), Date.strptime(params[:user][:end_date]))
-    # render 'cash-flow'
     end
   end
 

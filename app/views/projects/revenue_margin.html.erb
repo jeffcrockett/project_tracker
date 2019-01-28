@@ -32,16 +32,25 @@
       <table>
         <tr>
           <th style="padding:0px;">Product</th>
-          <th style="text-align:center;">Revenue</th>
-          <th style="text-align:center;">Margin</th>
+          <th style="text-align:right;">Revenue</th>
+          <th style="text-align:right;">Margin</th>
         </tr>
-        <% @updated_results_hash.keys.each do |key| %>
+        <% rev_total = 0 %>
+        <% mar_total = 0 %>
+        <% @updated_results_hash.keys.sort.each do |key| %>
+          <% rev_total += @updated_results_hash[key][:Revenue] %>
+          <% mar_total += @updated_results_hash[key][:Margin] %>
         <tr>
           <td style="padding:0px;"><%= key %></td>
-          <td style="text-align: right; padding:50px;"><%= number_with_delimiter(@updated_results_hash[key][:Revenue], :delimiter => ',') %></td>
-          <td style="text-align: right; padding:50px;"><%= number_with_delimiter(@updated_results_hash[key][:Margin], :delimiter => ',') %></td>
+          <td style="text-align: right; padding-left:50px;"><%= number_with_precision(@updated_results_hash[key][:Revenue], delimiter:',', precision:0) %></td>
+          <td style="text-align: right; padding-left:50px;"><%= number_with_precision(@updated_results_hash[key][:Margin], delimiter:',', precision:0) %></td>
         </tr>
         <% end %>
+        <tr>
+          <td style="padding:0px;">TOTAL:</td>
+          <td style="text-align: right; padding-left:50px;"><%= number_with_precision(rev_total, delimiter:',', precision:0) %></td>
+          <td style="text-align: right; padding-left:50px;"><%= number_with_precision(mar_total, delimiter:',', precision:0) %></td>
+        </tr>
       </table>
       <% end %>
       </div>

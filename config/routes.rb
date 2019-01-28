@@ -30,8 +30,11 @@ Rails.application.routes.draw do
   get 'registrations/:id/forcompany', to: 'registrations#forcompany'
   get 'registrations/expiration', to: 'registrations#expiration'
 
-  resources :shipments, except: :show
-  get 'shipments/delete', to: 'shipments#markfordeath'
+  get 'shipments/:id/new', to: 'shipments#new'
+  post 'shipments', to: 'shipments#create'
+  get 'shipments/:id/edit', to: 'shipments#edit'
+  patch 'shipments/:id', to: 'shipments#update', as: :shipment
+  put 'shipments/:id', to: 'shipments#update'
   get 'shipments/:id/delete', to: 'shipments#destroy'
   resources :distributors, except: :show
   get 'distributors/delete', to: 'distributors#markfordeath'

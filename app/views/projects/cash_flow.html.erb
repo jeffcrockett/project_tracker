@@ -2,8 +2,8 @@
 <container>
 <h3 style="text-align:center;">Cash Flow for Selected Time and Projects</h3>
   <div class="row">
-    <div class="col-lg-4" style="padding-top:20px">
-    <div class="mx-auto" style="width:300px;">
+    <div class="col-md-4" style="padding-top:20px">
+    <div class="mx-auto" style="width:200px;">
         <%= form_for current_user, :url => url_for(:controller => 'projects', :action => 'cash_flow'), method: :get do |f| %> 
     <div class="form-group">
         <%= f.label :start_date, "Start date:", class: "control-label" %>
@@ -25,21 +25,21 @@
 <% end %> 
     </div>
     </div>
-    <div class="col-lg-8" style="padding-top: 20px;">
-    <div class="mx-auto" style="width:600px;">
+    <div class="col-md-8" style="padding-top: 20px;">
+    <div class="mx-auto" style="width:370px;">
     <% if @flow_hash %>
-      <table>
+      <table style="width:100%">
         <tr>
-          <th style="text-align:center;">Date</th>
-          <th>Net Cash Flow</th>
-          <th style="padding: 15px;">Cumulative Cash Flow</th>
+          <th style="text-align:left; width:20%;">Date</th>
+          <th style="text-align:right; width:40%;">Daily<br>Cash Flow</th>
+          <th style="text-align:right; width:40%;">Cumulative<br>Cash Flow</th>
         </tr>
         <% @flow_hash.keys.each do |key|  %>
           <% if @flow_hash[key] != 0%>
         <tr>
           <td><%= key.strftime('%m/%d/%Y') %></td>
-          <td style="text-align: center;"><%= @flow_hash[key] %></td>
-          <td style="text-align: center;"><%= @cumulative_cash_flow += @flow_hash[key] %></td>
+          <td style="text-align: right;"><%= number_with_precision(@flow_hash[key], delimiter:',', precision:0) %></td>
+          <td style="text-align: right;"><%= number_with_precision(@cumulative_cash_flow += @flow_hash[key], delimiter:',', precision:0) %></td>
         <tr>
         <% end %>
         <% end %>

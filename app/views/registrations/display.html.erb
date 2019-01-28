@@ -7,12 +7,11 @@
       <h3>(sorted by expiration date)</h3>
         <% @registrations.each do |reg| %>
         <hr>
-        <p>Company: <%=reg.project.company.name%></p>
-        <p>Project: <%=reg.project.name%></p>
-        <p>Distributor: <%=reg.project.distributor.name%></p>
-        <p>Expiration: <%=reg.expiration ? reg.expiration.strftime('%m/%d/%Y') : "None given"%></p>
-        <p>Contact: <%=reg.contact%></p>
-        <p>Notes: <%=reg.notes ? reg.notes : "None given"%></p>
+        <%=reg.project.company.name%>: <%=reg.project.name%><br>
+        Distributor: <%=reg.project.distributor.name%><br>
+        Expiration: <%=reg.expiration ? reg.expiration.strftime('%m/%d/%Y') : "None given" %><br>
+        Contact: <%=reg.contact%><br>
+        Notes: <%=reg.notes%><br>
         <% end %>
     </div>
   </div>

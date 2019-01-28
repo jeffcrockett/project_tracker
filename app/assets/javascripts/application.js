@@ -93,16 +93,7 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
-// Handle a selection for the Registration select list
-$(document).on("turbolinks:load", function () {
-  $("#ship_proj_select").on("select2:select", function (e) {
-    if (e.params.data.id != "0") {
-      $('#ship_proj_form_id').val(e.params.data.id.toString())
-    }
-  });
-});
-
-// Handle a selection for the Registration select list
+// Handle a selection for the shipment product select list
 $(document).on("turbolinks:load", function () {
   $("#ship_prod_select").on("select2:select", function (e) {
     if (e.params.data.id != "0") {
@@ -174,6 +165,13 @@ $(document).on("turbolinks:load", function () {
   })
 })
 
+// Handle a click on the add shipment button
+$(document).on("turbolinks:load", function () {
+  $(".add-shipment").on("click", function (e) {
+    window.location = "/shipments/" + e.target.id + "/new"
+  })
+})
+
 // Handle a click on the shift shipment dates button
 $(document).on("turbolinks:load", function () {
   $(".shift-dates").on("click", function (e) {
@@ -241,9 +239,9 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
-// Handle a click on the "Get registrations" button
+// Handle a selection on the choice list in View Registrations by Company
 $(document).on("turbolinks:load", function () {
-  $("#get_reg").on("click", function (e) {
+  $("#get_company").on("select2:select", function (e) {
     let val = $("#get_company").val();
     if (val != "0") {
       window.location = "/registrations/" + val + "/forcompany";

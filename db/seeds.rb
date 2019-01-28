@@ -34,470 +34,372 @@ Company.destroy_all
 User.destroy_all
 
 User.create!([
-{
-  name:"both",
-  password:"both",
-  admin:"true",
-  exec:"true"
-},
-{
-  name:"adminOnly",
-  password:"adminOnly",
-  admin:"true",
-  exec:"false"
-},
-{
-  name:"execOnly",
-  password:"execOnly",
-  admin:"false",
-  exec:"true"
-},
-{
-  name:"neither",
-  password:"neither",
-  admin:"false",
-  exec:"false"
-}])
+{ name:"both", password:"both", admin:"true", exec:"true" },
+{ name:"admin", password:"admin", admin:"true", exec:"false" },
+{ name:"exec", password:"exec", admin:"false", exec:"true" },
+{ name:"neither", password:"neither", admin:"false", exec:"false" }
+])
 
 Company.create!([
-{
-  name:"CSG"
-},
-{
-  name:"INS"
-},
-{
-  name:"Company1"
-},
-{
-  name:"Company2"
-},
-{
-  name:"Company3"
-}])
+{ name:"AwesomeCo" },
+{ name:"BestCo" },
+{ name:"CoolCo" },
+{ name:"DistribuCo" },
+{ name:"ExpertCo" },
+{ name:"FantistiCo" },
+{ name:"GreatCo" },
+{ name:"HoorayCo" },
+{ name:"InsideSalesCo" },
+{ name:"JustSoCo" },
+{ name:"KleverCo" },
+{ name:"LikeItCo" },
+{ name:"MasterCo" },
+{ name:"NiceCo" },
+{ name:"OkayCo" },
+{ name:"PrettyCo" },
+{ name:"QuickCo" },
+{ name:"RadCo" },
+{ name:"ResellerCo" },
+{ name:"SweetCo" },
+{ name:"TerrifiCo" },
+{ name:"UltimaCo" },
+{ name:"VictorCo" },
+{ name:"WowCo" },
+{ name:"XCellentCo" },
+{ name:"YippieCo" },
+{ name:"ZippyCo" }
+])
 
 Product.create!([
-{
-  name:"PTA PRO 1S",
-  price:104.00,
-  cogs:30.42
-},
-{
-  name:"PTA PRO 2S 1LTE !WIFI",
-  price:129.00,
-  cogs:37.73
-},
-{
-  name:"PTA PRO 3S LTEWIFIGPS",
-  price:144.00,
-  cogs:42.12
-},
-{
-  name:"PTA PRO 1ST",
-  price:104.00,
-  cogs:30.42
-},
-{
-  name:"PTA PRO 2ST",
-  price:134.00,
-  cogs:39.20
-},
-{
-  name:"PTA PRO 3ST",
-  price:149.00,
-  cogs:43.58
-},
-{
-  name:"PTA PRO 4ST",
-  price:174.00,
-  cogs:50.90
-},
-{
-  name:"PTA PRO 5ST",
-  price:209.00,
-  cogs:61.13
-},
-{
-  name:"PTA PRO 6ST",
-  price:219.00,
-  cogs:64.06
-},
-{
-  name:"PTA PRO 2C",
-  price:209.00,
-  cogs:61.13
-},
-{
-  name:"PTA PRO 3C",
-  price:219.00,
-  cogs:64.06
-},
-{
-  name:"PTA PRO 4C",
-  price:229.00,
-  cogs:66.98
-},
-{
-  name:"PTA PRO 4C - Double MIMO",
-  price:329.00,
-  cogs:96.23
-},
-{
-  name:"PTA PRO 5C",
-  price:249.00,
-  cogs:72.83
-},
-{
-  name:"PTA PRO 5C - Double MIMO/GPS",
-  price:329.00,
-  cogs:96.23
-},
-{
-  name:"PTA PRO 2R",
-  price:209.00,
-  cogs:61.13
-},
-{
-  name:"PTA PRO 3R",
-  price:239.00,
-  cogs:69.91
-},
-{
-  name:"PTA PRO 4R",
-  price:249.00,
-  cogs:72.83
-},
-{
-  name:"PTA PRO 5R",
-  price:259.00,
-  cogs:75.76
-},
-{
-  name:"PTA PRO 6R",
-  price:269.00,
-  cogs:78.68
-},
-{
-  name:"PTA PRO 2D",
-  price:295.00,
-  cogs:86.29
-},
-{
-  name:"PTA PRO 3D",
-  price:305.00,
-  cogs:89.21
-},
-{
-  name:"PTA PRO 4D",
-  price:315.00,
-  cogs:92.14
-},
-{
-  name:"PTA PRO 5D",
-  price:325.00,
-  cogs:95.06
-},
-{
-  name:"PTA PRO 6D",
-  price:335.00,
-  cogs:97.99
-},
-{
-  name:"PTA PRO 2GS",
-  price:279.00,
-  cogs:81.61
-},
-{
-  name:"PTA PRO 3GS",
-  price:299.00,
-  cogs:87.46
-},
-{
-  name:"PTA PRO 4GS",
-  price:319.00,
-  cogs:93.31
-},
-{
-  name:"PTA PRO 5GS",
-  price:339.00,
-  cogs:99.16
-},
-{
-  name:"PTA PRO 7H - 2LTE/4WIFI/GPS",
-  price:409.00,
-  cogs:119.63
-},
-{
-  name:"PTA PRO 7H",
-  price:445.00,
-  cogs:130.16
-},
-{
-  name:"PTA PRO 9H",
-  price:509.00,
-  cogs:148.88
-},
-{
-  name:"PTA PRO 11H",
-  price:549.00,
-  cogs:160.58
-},
-{
-  name:"Labrador W/1ft Conn.",
-  price:129.00,
-  cogs:37.73
-},
-{
-  name:"Labrador W/15ft",
-  price:149.00,
-  cogs:43.58
-},
-{
-  name:"Great Dane",
-  price:329.00,
-  cogs:96.23
-},
-{
-  name:"Great Dane W Cables",
-  price:399.00,
-  cogs:116.71
-},
-{
-  name:"Blade",
-  price:69.00,
-  cogs:20.18
-},
-{
-  name:"MM MIMO",
-  price:49.00,
-  cogs:14.33
-}])
+{ name:"Alpha", price:104.00, cogs:30.42 },
+{ name:"Bravo", price:129.00, cogs:37.73 },
+{ name:"Charlie", price:144.00, cogs:42.12 },
+{ name:"Delta", price:104.00, cogs:30.42 },
+{ name:"Echo", price:134.00, cogs:39.20 },
+{ name:"Foxtrot", price:149.00, cogs:43.58 },
+{ name:"Golf", price:174.00, cogs:50.90 },
+{ name:"Hotel", price:209.00, cogs:61.13 },
+{ name:"India", price:219.00, cogs:64.06 },
+{ name:"Juliet", price:209.00, cogs:61.13 },
+{ name:"Kilo", price:219.00, cogs:64.06 },
+{ name:"Lima", price:229.00, cogs:66.98 },
+{ name:"Mike", price:329.00, cogs:96.23 },
+{ name:"November", price:249.00, cogs:72.83 },
+{ name:"Oscar", price:329.00, cogs:96.23 },
+{ name:"Papa", price:209.00, cogs:61.13 },
+{ name:"Quebec", price:239.00, cogs:69.91 },
+{ name:"Romeo", price:249.00, cogs:72.83 },
+{ name:"Sierra", price:259.00, cogs:75.76 },
+{ name:"Tango", price:269.00, cogs:78.68 },
+{ name:"Uniform", price:295.00, cogs:86.29 },
+{ name:"Victor", price:305.00, cogs:89.21 },
+{ name:"Whiskey", price:315.00, cogs:92.14 },
+{ name:"Xray", price:325.00, cogs:95.06 },
+{ name:"Yankee", price:335.00, cogs:97.99 },
+{ name:"Zulu", price:279.00, cogs:81.61 }
+])
 
 
 Distributor.create!([
-{
-  name:"Parsec",
-  discount:0
-},
-{
-  name:"CSG",
-  discount:45
-},
-{
-  name:"INS",
-  discount:45
-},
-{
-  name:"Dist1",
-  discount:25
-},
-{
-  name:"Dist2",
-  discount:25
-}])
+{ name:"InsideSalesCo", discount:0 },
+{ name:"MasterCo", discount:45 },
+{ name:"ResellerCo", discount:25 },
+{ name:"DistribuCo", discount:35 }
+])
 
 
 Project.create!([
-{
-  company_id:compID("CSG"),
-  name:"Restock",
-  confidence:100,
-  distributor_id:distID("CSG"),
-  rep:"Joe Repp",
-  application:"Unknown"
-},
-{
-  company_id:compID("INS"),
-  name:"Restock",
-  confidence:100,
-  distributor_id:distID("INS"),
-  rep:"Jane Repp",
-  application:"Unknown"
-},
-{
-  company_id:compID("Company1"),
-  name:"Project1 Trial",
-  confidence:100,
-  distributor_id:distID("Parsec"),
-  rep:"Joe Repp",
-  application:"Whatever"
-},
-{
-  company_id:compID("Company1"),
-  name:"Project1 Deployment",
-  confidence:80,
-  distributor_id:distID("Parsec"),
-  rep:"Jane Repp",
-  application:"Whatever"
-},
-{
-  company_id:compID("Company2"),
-  name:"Project1",
-  confidence:90,
-  distributor_id:distID("Parsec"),
-  rep:"Joe Repp",
-  application:"Whatever"
-},
-{
-  company_id:compID("Company3"),
-  name:"Project1",
-  confidence:50,
-  distributor_id:distID("CSG"),
-  rep:"Jane Repp",
-  application:"Whatever"
-}])
+{ company_id:compID("MasterCo"), name:"Restock", confidence:100, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Stalwart application" },
+{ company_id:compID("DistribuCo"), name:"Restock", confidence:100, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Stalwart application" },
+{ company_id:compID("ResellerCo"), name:"Restock", confidence:100, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Stalwart application" },
+{ company_id:compID("AwesomeCo"), name:"Good Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Stalwart application" },
+{ company_id:compID("AwesomeCo"), name:"Great Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Resolute application" },
+{ company_id:compID("BestCo"), name:"Wonderful Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Happy application" },
+{ company_id:compID("BestCo"), name:"Terrific Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Groundbreaking application" },
+{ company_id:compID("CoolCo"), name:"Special Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Perfect application" },
+{ company_id:compID("CoolCo"), name:"Masterly Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Loyal application" },
+{ company_id:compID("ExpertCo"), name:"Awesome Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Trustworthy application" },
+{ company_id:compID("ExpertCo"), name:"Cool Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Magnificent application" },
+{ company_id:compID("FantistiCo"), name:"Big Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Serene application" },
+{ company_id:compID("FantistiCo"), name:"Delightful Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Brave application" },
+{ company_id:compID("GreatCo"), name:"Enjoyable Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Stately application" },
+{ company_id:compID("GreatCo"), name:"Friendly Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Glorious application" },
+{ company_id:compID("HoorayCo"), name:"Kind Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Talented application" },
+{ company_id:compID("HoorayCo"), name:"Bodacious Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Lovely application" },
+{ company_id:compID("JustSoCo"), name:"Fun Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Lively application" },
+{ company_id:compID("JustSoCo"), name:"Tasty Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Well-Organized application" },
+{ company_id:compID("KleverCo"), name:"Keen Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Winning application" },
+{ company_id:compID("KleverCo"), name:"Neat Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Strong application" },
+{ company_id:compID("LikeItCo"), name:"Fluffy Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Empathetic application" },
+{ company_id:compID("LikeItCo"), name:"Pleasant Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Civic-Minded application" },
+{ company_id:compID("NiceCo"), name:"Groovy Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Generous application" },
+{ company_id:compID("NiceCo"), name:"Disruptive Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Courteous application" },
+{ company_id:compID("OkayCo"), name:"Radical Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Helpful application" },
+{ company_id:compID("OkayCo"), name:"Stalwart Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Good application" },
+{ company_id:compID("PrettyCo"), name:"Resolute Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Great application" },
+{ company_id:compID("PrettyCo"), name:"Happy Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Wonderful application" },
+{ company_id:compID("QuickCo"), name:"Groundbreaking Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Terrific application" },
+{ company_id:compID("QuickCo"), name:"Perfect Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Special application" },
+{ company_id:compID("RadCo"), name:"Loyal Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Masterly application" },
+{ company_id:compID("RadCo"), name:"Trustworthy Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Awesome application" },
+{ company_id:compID("SweetCo"), name:"Magnificent Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Cool application" },
+{ company_id:compID("SweetCo"), name:"Serene Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Big application" },
+{ company_id:compID("TerrifiCo"), name:"Brave Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Delightful application" },
+{ company_id:compID("TerrifiCo"), name:"Stately Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Enjoyable application" },
+{ company_id:compID("UltimaCo"), name:"Glorious Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Friendly application" },
+{ company_id:compID("UltimaCo"), name:"Talented Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Kind application" },
+{ company_id:compID("VictorCo"), name:"Lovely Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Bodacious application" },
+{ company_id:compID("VictorCo"), name:"Lively Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Fun application" },
+{ company_id:compID("WowCo"), name:"Well-Organized Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Tasty application" },
+{ company_id:compID("WowCo"), name:"Winning Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Keen application" },
+{ company_id:compID("XCellentCo"), name:"Strong Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Neat application" },
+{ company_id:compID("XCellentCo"), name:"Empathetic Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Fluffy application" },
+{ company_id:compID("YippieCo"), name:"Civic-Minded Project", confidence:50, distributor_id:distID("DistribuCo"), rep:"J. Repp", application:"Pleasant application" },
+{ company_id:compID("YippieCo"), name:"Generous Project", confidence:25, distributor_id:distID("ResellerCo"), rep:"J. Repp", application:"Groovy application" },
+{ company_id:compID("ZippyCo"), name:"Courteous Project", confidence:100, distributor_id:distID("InsideSalesCo"), rep:"J. Repp", application:"Disruptive application" },
+{ company_id:compID("ZippyCo"), name:"Helpful Project", confidence:75, distributor_id:distID("MasterCo"), rep:"J. Repp", application:"Radical application" }
+])
 
 
 Shipment.create!([
-{
-  project_id:projID("CSG","Restock"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/01/01"
-},
-{
-  project_id:projID("CSG","Restock"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/01/01"
-},
-{
-  project_id:projID("CSG","Restock"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/02/01"
-},
-{
-  project_id:projID("CSG","Restock"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/02/01"
-},
-{
-  project_id:projID("INS","Restock"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/01/02"
-},
-{
-  project_id:projID("INS","Restock"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/01/02"
-},
-{
-  project_id:projID("INS","Restock"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/02/02"
-},
-{
-  project_id:projID("INS","Restock"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/02/02"
-},
-{
-  project_id:projID("Company1","Project1 Trial"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/01/03"
-},
-{
-  project_id:projID("Company1","Project1 Trial"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/01/03"
-},
-{
-  project_id:projID("Company1","Project1 Trial"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/02/03"
-},
-{
-  project_id:projID("Company1","Project1 Trial"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/02/03"
-},
-{
-  project_id:projID("Company1","Project1 Deployment"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/01/04"
-},
-{
-  project_id:projID("Company1","Project1 Deployment"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/01/04"
-},
-{
-  project_id:projID("Company1","Project1 Deployment"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/02/04"
-},
-{
-  project_id:projID("Company1","Project1 Deployment"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/02/04"
-},
-{
-  project_id:projID("Company2","Project1"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/01/05"
-},
-{
-  project_id:projID("Company2","Project1"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/01/05"
-},
-{
-  project_id:projID("Company2","Project1"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/02/05"
-},
-{
-  project_id:projID("Company2","Project1"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/02/05"
-},
-{
-  project_id:projID("Company3","Project1"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/01/06"
-},
-{
-  project_id:projID("Company3","Project1"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/01/06"
-},
-{
-  project_id:projID("Company3","Project1"),
-  product_id:prodID("Great Dane"),
-  quantity:100,
-  date: "2019/02/06"
-},
-{
-  project_id:projID("Company3","Project1"),
-  product_id:prodID("PTA PRO 1S"),
-  quantity:100,
-  date: "2019/02/06"
-}])
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Alpha"),quantity:100,date:"2019-01-01" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Alpha"),quantity:100,date:"2019-02-01" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Alpha"),quantity:100,date:"2019-03-01" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Alpha"),quantity:100,date:"2019-04-01" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Bravo"),quantity:100,date:"2019-01-03" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Bravo"),quantity:100,date:"2019-02-03" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Bravo"),quantity:100,date:"2019-03-03" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Bravo"),quantity:100,date:"2019-04-03" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Charlie"),quantity:100,date:"2019-01-05" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Charlie"),quantity:100,date:"2019-02-05" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Charlie"),quantity:100,date:"2019-03-05" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Charlie"),quantity:100,date:"2019-04-05" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Delta"),quantity:100,date:"2019-01-07" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Delta"),quantity:100,date:"2019-02-07" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Delta"),quantity:100,date:"2019-03-07" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Delta"),quantity:100,date:"2019-04-07" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Echo"),quantity:100,date:"2019-01-09" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Echo"),quantity:100,date:"2019-02-09" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Echo"),quantity:100,date:"2019-03-09" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Echo"),quantity:100,date:"2019-04-09" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-01-11" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-02-11" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-03-11" },
+{ project_id:projID("MasterCo","Restock"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-04-11" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Golf"),quantity:100,date:"2019-01-13" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Golf"),quantity:100,date:"2019-02-13" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Golf"),quantity:100,date:"2019-03-13" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Golf"),quantity:100,date:"2019-04-13" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Hotel"),quantity:100,date:"2019-01-15" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Hotel"),quantity:100,date:"2019-02-15" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Hotel"),quantity:100,date:"2019-03-15" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Hotel"),quantity:100,date:"2019-04-15" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Juliet"),quantity:100,date:"2019-01-17" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Juliet"),quantity:100,date:"2019-02-17" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Juliet"),quantity:100,date:"2019-03-17" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Juliet"),quantity:100,date:"2019-04-17" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Kilo"),quantity:100,date:"2019-01-19" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Kilo"),quantity:100,date:"2019-02-19" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Kilo"),quantity:100,date:"2019-03-19" },
+{ project_id:projID("DistribuCo","Restock"),product_id:prodID("Kilo"),quantity:100,date:"2019-04-19" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Lima"),quantity:100,date:"2019-01-21" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Lima"),quantity:100,date:"2019-02-21" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Lima"),quantity:100,date:"2019-03-21" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Lima"),quantity:100,date:"2019-04-21" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Mike"),quantity:100,date:"2019-01-23" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Mike"),quantity:100,date:"2019-02-23" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Mike"),quantity:100,date:"2019-03-23" },
+{ project_id:projID("ResellerCo","Restock"),product_id:prodID("Mike"),quantity:100,date:"2019-04-23" },
+{ project_id:projID("AwesomeCo","Good Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-01-01" },
+{ project_id:projID("AwesomeCo","Good Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-02-01" },
+{ project_id:projID("AwesomeCo","Good Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-03-01" },
+{ project_id:projID("AwesomeCo","Good Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-04-01" },
+{ project_id:projID("AwesomeCo","Great Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-01-02" },
+{ project_id:projID("AwesomeCo","Great Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-02-02" },
+{ project_id:projID("AwesomeCo","Great Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-03-02" },
+{ project_id:projID("AwesomeCo","Great Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-04-02" },
+{ project_id:projID("BestCo","Wonderful Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-01-03" },
+{ project_id:projID("BestCo","Wonderful Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-02-03" },
+{ project_id:projID("BestCo","Wonderful Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-03-03" },
+{ project_id:projID("BestCo","Wonderful Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-04-03" },
+{ project_id:projID("BestCo","Terrific Project"),product_id:prodID("Delta"),quantity:100,date:"2019-01-04" },
+{ project_id:projID("BestCo","Terrific Project"),product_id:prodID("Delta"),quantity:100,date:"2019-02-04" },
+{ project_id:projID("BestCo","Terrific Project"),product_id:prodID("Delta"),quantity:100,date:"2019-03-04" },
+{ project_id:projID("BestCo","Terrific Project"),product_id:prodID("Delta"),quantity:100,date:"2019-04-04" },
+{ project_id:projID("CoolCo","Special Project"),product_id:prodID("Echo"),quantity:100,date:"2019-01-05" },
+{ project_id:projID("CoolCo","Special Project"),product_id:prodID("Echo"),quantity:100,date:"2019-02-05" },
+{ project_id:projID("CoolCo","Special Project"),product_id:prodID("Echo"),quantity:100,date:"2019-03-05" },
+{ project_id:projID("CoolCo","Special Project"),product_id:prodID("Echo"),quantity:100,date:"2019-04-05" },
+{ project_id:projID("CoolCo","Masterly Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-01-06" },
+{ project_id:projID("CoolCo","Masterly Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-02-06" },
+{ project_id:projID("CoolCo","Masterly Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-03-06" },
+{ project_id:projID("CoolCo","Masterly Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-04-06" },
+{ project_id:projID("ExpertCo","Awesome Project"),product_id:prodID("Golf"),quantity:100,date:"2019-01-07" },
+{ project_id:projID("ExpertCo","Awesome Project"),product_id:prodID("Golf"),quantity:100,date:"2019-02-07" },
+{ project_id:projID("ExpertCo","Awesome Project"),product_id:prodID("Golf"),quantity:100,date:"2019-03-07" },
+{ project_id:projID("ExpertCo","Awesome Project"),product_id:prodID("Golf"),quantity:100,date:"2019-04-07" },
+{ project_id:projID("ExpertCo","Cool Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-01-08" },
+{ project_id:projID("ExpertCo","Cool Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-02-08" },
+{ project_id:projID("ExpertCo","Cool Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-03-08" },
+{ project_id:projID("ExpertCo","Cool Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-04-08" },
+{ project_id:projID("FantistiCo","Big Project"),product_id:prodID("India"),quantity:100,date:"2019-01-09" },
+{ project_id:projID("FantistiCo","Big Project"),product_id:prodID("India"),quantity:100,date:"2019-02-09" },
+{ project_id:projID("FantistiCo","Big Project"),product_id:prodID("India"),quantity:100,date:"2019-03-09" },
+{ project_id:projID("FantistiCo","Big Project"),product_id:prodID("India"),quantity:100,date:"2019-04-09" },
+{ project_id:projID("FantistiCo","Delightful Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-01-10" },
+{ project_id:projID("FantistiCo","Delightful Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-02-10" },
+{ project_id:projID("FantistiCo","Delightful Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-03-10" },
+{ project_id:projID("FantistiCo","Delightful Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-04-10" },
+{ project_id:projID("GreatCo","Enjoyable Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-01-11" },
+{ project_id:projID("GreatCo","Enjoyable Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-02-11" },
+{ project_id:projID("GreatCo","Enjoyable Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-03-11" },
+{ project_id:projID("GreatCo","Enjoyable Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-04-11" },
+{ project_id:projID("GreatCo","Friendly Project"),product_id:prodID("Lima"),quantity:100,date:"2019-01-12" },
+{ project_id:projID("GreatCo","Friendly Project"),product_id:prodID("Lima"),quantity:100,date:"2019-02-12" },
+{ project_id:projID("GreatCo","Friendly Project"),product_id:prodID("Lima"),quantity:100,date:"2019-03-12" },
+{ project_id:projID("GreatCo","Friendly Project"),product_id:prodID("Lima"),quantity:100,date:"2019-04-12" },
+{ project_id:projID("HoorayCo","Kind Project"),product_id:prodID("Mike"),quantity:100,date:"2019-01-13" },
+{ project_id:projID("HoorayCo","Kind Project"),product_id:prodID("Mike"),quantity:100,date:"2019-02-13" },
+{ project_id:projID("HoorayCo","Kind Project"),product_id:prodID("Mike"),quantity:100,date:"2019-03-13" },
+{ project_id:projID("HoorayCo","Kind Project"),product_id:prodID("Mike"),quantity:100,date:"2019-04-13" },
+{ project_id:projID("HoorayCo","Bodacious Project"),product_id:prodID("November"),quantity:100,date:"2019-01-14" },
+{ project_id:projID("HoorayCo","Bodacious Project"),product_id:prodID("November"),quantity:100,date:"2019-02-14" },
+{ project_id:projID("HoorayCo","Bodacious Project"),product_id:prodID("November"),quantity:100,date:"2019-03-14" },
+{ project_id:projID("HoorayCo","Bodacious Project"),product_id:prodID("November"),quantity:100,date:"2019-04-14" },
+{ project_id:projID("JustSoCo","Fun Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-01-15" },
+{ project_id:projID("JustSoCo","Fun Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-02-15" },
+{ project_id:projID("JustSoCo","Fun Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-03-15" },
+{ project_id:projID("JustSoCo","Fun Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-04-15" },
+{ project_id:projID("JustSoCo","Tasty Project"),product_id:prodID("Papa"),quantity:100,date:"2019-01-16" },
+{ project_id:projID("JustSoCo","Tasty Project"),product_id:prodID("Papa"),quantity:100,date:"2019-02-16" },
+{ project_id:projID("JustSoCo","Tasty Project"),product_id:prodID("Papa"),quantity:100,date:"2019-03-16" },
+{ project_id:projID("JustSoCo","Tasty Project"),product_id:prodID("Papa"),quantity:100,date:"2019-04-16" },
+{ project_id:projID("KleverCo","Keen Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-01-17" },
+{ project_id:projID("KleverCo","Keen Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-02-17" },
+{ project_id:projID("KleverCo","Keen Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-03-17" },
+{ project_id:projID("KleverCo","Keen Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-04-17" },
+{ project_id:projID("KleverCo","Neat Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-01-18" },
+{ project_id:projID("KleverCo","Neat Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-02-18" },
+{ project_id:projID("KleverCo","Neat Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-03-18" },
+{ project_id:projID("KleverCo","Neat Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-04-18" },
+{ project_id:projID("LikeItCo","Fluffy Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-01-19" },
+{ project_id:projID("LikeItCo","Fluffy Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-02-19" },
+{ project_id:projID("LikeItCo","Fluffy Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-03-19" },
+{ project_id:projID("LikeItCo","Fluffy Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-04-19" },
+{ project_id:projID("LikeItCo","Pleasant Project"),product_id:prodID("Tango"),quantity:100,date:"2019-01-20" },
+{ project_id:projID("LikeItCo","Pleasant Project"),product_id:prodID("Tango"),quantity:100,date:"2019-02-20" },
+{ project_id:projID("LikeItCo","Pleasant Project"),product_id:prodID("Tango"),quantity:100,date:"2019-03-20" },
+{ project_id:projID("LikeItCo","Pleasant Project"),product_id:prodID("Tango"),quantity:100,date:"2019-04-20" },
+{ project_id:projID("NiceCo","Groovy Project"),product_id:prodID("Uniform"),quantity:100,date:"2019-01-21" },
+{ project_id:projID("NiceCo","Groovy Project"),product_id:prodID("Uniform"),quantity:100,date:"2019-02-21" },
+{ project_id:projID("NiceCo","Groovy Project"),product_id:prodID("Uniform"),quantity:100,date:"2019-03-21" },
+{ project_id:projID("NiceCo","Groovy Project"),product_id:prodID("Uniform"),quantity:100,date:"2019-04-21" },
+{ project_id:projID("NiceCo","Disruptive Project"),product_id:prodID("Victor"),quantity:100,date:"2019-01-22" },
+{ project_id:projID("NiceCo","Disruptive Project"),product_id:prodID("Victor"),quantity:100,date:"2019-02-22" },
+{ project_id:projID("NiceCo","Disruptive Project"),product_id:prodID("Victor"),quantity:100,date:"2019-03-22" },
+{ project_id:projID("NiceCo","Disruptive Project"),product_id:prodID("Victor"),quantity:100,date:"2019-04-22" },
+{ project_id:projID("OkayCo","Radical Project"),product_id:prodID("Whiskey"),quantity:100,date:"2019-01-23" },
+{ project_id:projID("OkayCo","Radical Project"),product_id:prodID("Whiskey"),quantity:100,date:"2019-02-23" },
+{ project_id:projID("OkayCo","Radical Project"),product_id:prodID("Whiskey"),quantity:100,date:"2019-03-23" },
+{ project_id:projID("OkayCo","Radical Project"),product_id:prodID("Whiskey"),quantity:100,date:"2019-04-23" },
+{ project_id:projID("OkayCo","Stalwart Project"),product_id:prodID("Xray"),quantity:100,date:"2019-01-24" },
+{ project_id:projID("OkayCo","Stalwart Project"),product_id:prodID("Xray"),quantity:100,date:"2019-02-24" },
+{ project_id:projID("OkayCo","Stalwart Project"),product_id:prodID("Xray"),quantity:100,date:"2019-03-24" },
+{ project_id:projID("OkayCo","Stalwart Project"),product_id:prodID("Xray"),quantity:100,date:"2019-04-24" },
+{ project_id:projID("PrettyCo","Resolute Project"),product_id:prodID("Yankee"),quantity:100,date:"2019-01-25" },
+{ project_id:projID("PrettyCo","Resolute Project"),product_id:prodID("Yankee"),quantity:100,date:"2019-02-25" },
+{ project_id:projID("PrettyCo","Resolute Project"),product_id:prodID("Yankee"),quantity:100,date:"2019-03-25" },
+{ project_id:projID("PrettyCo","Resolute Project"),product_id:prodID("Yankee"),quantity:100,date:"2019-04-25" },
+{ project_id:projID("PrettyCo","Happy Project"),product_id:prodID("Zulu"),quantity:100,date:"2019-01-26" },
+{ project_id:projID("PrettyCo","Happy Project"),product_id:prodID("Zulu"),quantity:100,date:"2019-02-26" },
+{ project_id:projID("PrettyCo","Happy Project"),product_id:prodID("Zulu"),quantity:100,date:"2019-03-26" },
+{ project_id:projID("PrettyCo","Happy Project"),product_id:prodID("Zulu"),quantity:100,date:"2019-04-26" },
+{ project_id:projID("QuickCo","Groundbreaking Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-01-01" },
+{ project_id:projID("QuickCo","Groundbreaking Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-02-01" },
+{ project_id:projID("QuickCo","Groundbreaking Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-03-01" },
+{ project_id:projID("QuickCo","Groundbreaking Project"),product_id:prodID("Alpha"),quantity:100,date:"2019-04-01" },
+{ project_id:projID("QuickCo","Perfect Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-01-02" },
+{ project_id:projID("QuickCo","Perfect Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-02-02" },
+{ project_id:projID("QuickCo","Perfect Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-03-02" },
+{ project_id:projID("QuickCo","Perfect Project"),product_id:prodID("Bravo"),quantity:100,date:"2019-04-02" },
+{ project_id:projID("RadCo","Loyal Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-01-03" },
+{ project_id:projID("RadCo","Loyal Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-02-03" },
+{ project_id:projID("RadCo","Loyal Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-03-03" },
+{ project_id:projID("RadCo","Loyal Project"),product_id:prodID("Charlie"),quantity:100,date:"2019-04-03" },
+{ project_id:projID("RadCo","Trustworthy Project"),product_id:prodID("Delta"),quantity:100,date:"2019-01-04" },
+{ project_id:projID("RadCo","Trustworthy Project"),product_id:prodID("Delta"),quantity:100,date:"2019-02-04" },
+{ project_id:projID("RadCo","Trustworthy Project"),product_id:prodID("Delta"),quantity:100,date:"2019-03-04" },
+{ project_id:projID("RadCo","Trustworthy Project"),product_id:prodID("Delta"),quantity:100,date:"2019-04-04" },
+{ project_id:projID("SweetCo","Magnificent Project"),product_id:prodID("Echo"),quantity:100,date:"2019-01-05" },
+{ project_id:projID("SweetCo","Magnificent Project"),product_id:prodID("Echo"),quantity:100,date:"2019-02-05" },
+{ project_id:projID("SweetCo","Magnificent Project"),product_id:prodID("Echo"),quantity:100,date:"2019-03-05" },
+{ project_id:projID("SweetCo","Magnificent Project"),product_id:prodID("Echo"),quantity:100,date:"2019-04-05" },
+{ project_id:projID("SweetCo","Serene Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-01-06" },
+{ project_id:projID("SweetCo","Serene Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-02-06" },
+{ project_id:projID("SweetCo","Serene Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-03-06" },
+{ project_id:projID("SweetCo","Serene Project"),product_id:prodID("Foxtrot"),quantity:100,date:"2019-04-06" },
+{ project_id:projID("TerrifiCo","Brave Project"),product_id:prodID("Golf"),quantity:100,date:"2019-01-07" },
+{ project_id:projID("TerrifiCo","Brave Project"),product_id:prodID("Golf"),quantity:100,date:"2019-02-07" },
+{ project_id:projID("TerrifiCo","Brave Project"),product_id:prodID("Golf"),quantity:100,date:"2019-03-07" },
+{ project_id:projID("TerrifiCo","Brave Project"),product_id:prodID("Golf"),quantity:100,date:"2019-04-07" },
+{ project_id:projID("TerrifiCo","Stately Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-01-08" },
+{ project_id:projID("TerrifiCo","Stately Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-02-08" },
+{ project_id:projID("TerrifiCo","Stately Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-03-08" },
+{ project_id:projID("TerrifiCo","Stately Project"),product_id:prodID("Hotel"),quantity:100,date:"2019-04-08" },
+{ project_id:projID("UltimaCo","Glorious Project"),product_id:prodID("India"),quantity:100,date:"2019-01-09" },
+{ project_id:projID("UltimaCo","Glorious Project"),product_id:prodID("India"),quantity:100,date:"2019-02-09" },
+{ project_id:projID("UltimaCo","Glorious Project"),product_id:prodID("India"),quantity:100,date:"2019-03-09" },
+{ project_id:projID("UltimaCo","Glorious Project"),product_id:prodID("India"),quantity:100,date:"2019-04-09" },
+{ project_id:projID("UltimaCo","Talented Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-01-10" },
+{ project_id:projID("UltimaCo","Talented Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-02-10" },
+{ project_id:projID("UltimaCo","Talented Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-03-10" },
+{ project_id:projID("UltimaCo","Talented Project"),product_id:prodID("Juliet"),quantity:100,date:"2019-04-10" },
+{ project_id:projID("VictorCo","Lovely Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-01-11" },
+{ project_id:projID("VictorCo","Lovely Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-02-11" },
+{ project_id:projID("VictorCo","Lovely Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-03-11" },
+{ project_id:projID("VictorCo","Lovely Project"),product_id:prodID("Kilo"),quantity:100,date:"2019-04-11" },
+{ project_id:projID("VictorCo","Lively Project"),product_id:prodID("Lima"),quantity:100,date:"2019-01-12" },
+{ project_id:projID("VictorCo","Lively Project"),product_id:prodID("Lima"),quantity:100,date:"2019-02-12" },
+{ project_id:projID("VictorCo","Lively Project"),product_id:prodID("Lima"),quantity:100,date:"2019-03-12" },
+{ project_id:projID("VictorCo","Lively Project"),product_id:prodID("Lima"),quantity:100,date:"2019-04-12" },
+{ project_id:projID("WowCo","Well-Organized Project"),product_id:prodID("Mike"),quantity:100,date:"2019-01-13" },
+{ project_id:projID("WowCo","Well-Organized Project"),product_id:prodID("Mike"),quantity:100,date:"2019-02-13" },
+{ project_id:projID("WowCo","Well-Organized Project"),product_id:prodID("Mike"),quantity:100,date:"2019-03-13" },
+{ project_id:projID("WowCo","Well-Organized Project"),product_id:prodID("Mike"),quantity:100,date:"2019-04-13" },
+{ project_id:projID("WowCo","Winning Project"),product_id:prodID("November"),quantity:100,date:"2019-01-14" },
+{ project_id:projID("WowCo","Winning Project"),product_id:prodID("November"),quantity:100,date:"2019-02-14" },
+{ project_id:projID("WowCo","Winning Project"),product_id:prodID("November"),quantity:100,date:"2019-03-14" },
+{ project_id:projID("WowCo","Winning Project"),product_id:prodID("November"),quantity:100,date:"2019-04-14" },
+{ project_id:projID("XCellentCo","Strong Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-01-15" },
+{ project_id:projID("XCellentCo","Strong Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-02-15" },
+{ project_id:projID("XCellentCo","Strong Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-03-15" },
+{ project_id:projID("XCellentCo","Strong Project"),product_id:prodID("Oscar"),quantity:100,date:"2019-04-15" },
+{ project_id:projID("XCellentCo","Empathetic Project"),product_id:prodID("Papa"),quantity:100,date:"2019-01-16" },
+{ project_id:projID("XCellentCo","Empathetic Project"),product_id:prodID("Papa"),quantity:100,date:"2019-02-16" },
+{ project_id:projID("XCellentCo","Empathetic Project"),product_id:prodID("Papa"),quantity:100,date:"2019-03-16" },
+{ project_id:projID("XCellentCo","Empathetic Project"),product_id:prodID("Papa"),quantity:100,date:"2019-04-16" },
+{ project_id:projID("YippieCo","Civic-Minded Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-01-17" },
+{ project_id:projID("YippieCo","Civic-Minded Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-02-17" },
+{ project_id:projID("YippieCo","Civic-Minded Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-03-17" },
+{ project_id:projID("YippieCo","Civic-Minded Project"),product_id:prodID("Quebec"),quantity:100,date:"2019-04-17" },
+{ project_id:projID("YippieCo","Generous Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-01-18" },
+{ project_id:projID("YippieCo","Generous Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-02-18" },
+{ project_id:projID("YippieCo","Generous Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-03-18" },
+{ project_id:projID("YippieCo","Generous Project"),product_id:prodID("Romeo"),quantity:100,date:"2019-04-18" },
+{ project_id:projID("ZippyCo","Courteous Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-01-19" },
+{ project_id:projID("ZippyCo","Courteous Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-02-19" },
+{ project_id:projID("ZippyCo","Courteous Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-03-19" },
+{ project_id:projID("ZippyCo","Courteous Project"),product_id:prodID("Sierra"),quantity:100,date:"2019-04-19" },
+{ project_id:projID("ZippyCo","Helpful Project"),product_id:prodID("Tango"),quantity:100,date:"2019-01-20" },
+{ project_id:projID("ZippyCo","Helpful Project"),product_id:prodID("Tango"),quantity:100,date:"2019-02-20" },
+{ project_id:projID("ZippyCo","Helpful Project"),product_id:prodID("Tango"),quantity:100,date:"2019-03-20" },
+{ project_id:projID("ZippyCo","Helpful Project"),product_id:prodID("Tango"),quantity:100,date:"2019-04-20" }
+])
 
 
 Registration.create!([
-{
-  project_id:projID("Company3","Project1"),
-  contact:"CSG Contact 1",
-  expiration:"03/31/19"
-}])
+{ project_id:projID("AwesomeCo","Great Project"), contact:"A. Contact", expiration:"2019-03-31" },
+{ project_id:projID("BestCo","Wonderful Project"), contact:"A. Contact", expiration:"2019-02-28" },
+{ project_id:projID("BestCo","Terrific Project"), contact:"A. Contact", expiration:"2019-04-30" },
+{ project_id:projID("CoolCo","Masterly Project"), contact:"A. Contact", expiration:"2019-01-31" }
+])

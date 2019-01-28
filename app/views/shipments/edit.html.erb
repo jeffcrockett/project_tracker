@@ -3,15 +3,15 @@
 <container>
   <div class="row">
     <div class="mx-auto" style="width:300px; padding-top:20px;">
-      <h1>View/Edit Shipments</h1>
-      <h4 style="padding-top:20px;">Select a Shipment:</h4>
-      <select id="ship_select" class="data-searchable" style="width:300px;">
-        <option value=0></option>
-        <% @shipments.each do |s| %>
-          <% sel = s.id==@shipment.id ? 'selected="selected" ' : '' %>
-          <option <%= "#{sel}" %> value= <%= s.id %> > <%= s.name %> </option>
-        <% end %>
-      </select>
+      <h1>Edit a Shipment for</h1>
+      <h1><%= full_project_name(@project) %></h1>
+        <h4 style="padding-top:20px;">Select a Product:</h4>
+        <select id="ship_prod_select" class="data-searchable" style="width:300px;">
+          <option value=0></option>
+          <% @products.each do |p| %>
+          <option value= <%= p.id %> > <%= p.name %> </option>
+          <% end %>
+        </select>
 
       <% @theObject = @shipment %>
       <%= render 'shared/error_messages' %>
@@ -19,3 +19,4 @@
     </div>
   </div>
 </container>
+

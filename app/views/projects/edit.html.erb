@@ -2,7 +2,8 @@
 
 <container>
   <div class="row">
-    <div class="col-md-6" style="padding-top:20px;">
+    <div class="col-md-4" style="padding-top:20px;">
+    <div class="mx-auto" style="width:300px;">
         <div class="mx-auto" style="padding-left:50px;">
       <h1>View/Edit Projects</h1>
       <h4 style="padding-top:20px;">Select a Project:</h4>
@@ -19,14 +20,19 @@
       <%= render "shared/project_form" %>
       </div>
     </div>
+    </div>
+    <div class="col-md-2"></div>
     <div class="col-md-6" style="padding-top:20px;">
+    <div class="mx-auto" style="width:370px;">
         <h1>Shipments</h1>
-        <button id=<%= @project.id %> type="button" class="btn btn-secondary shift-dates">Shift shipment dates</button>
+        <button id=<%= @project.id %> type="button" class="btn btn-secondary add-shipment">Add Shipment</button>
+        <button id=<%= @project.id %> type="button" class="btn btn-secondary shift-dates">Shift dates</button>
         <% @shipments.each do |s| %>
         <p><%= s.date.strftime('%m/%d/%Y') %> - <%= s.quantity %> - <%= s.product.name %><br>
         <button type="button" class="edit-shipment btn btn-primary" id=<%=s.id%>>Edit</button> <button type="button" class="delete-shipment btn btn-danger" id=<%=s.id%>>Delete</button>
         </p>
         <% end %>
+    </div>
     </div>
   </div>
 </container>
