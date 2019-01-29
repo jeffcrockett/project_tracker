@@ -2,12 +2,12 @@
 
 <container>
   <div class="row">
-    <div class="mx-auto" style="width:300px; padding-top:20px;">
+    <div class="mx-auto" style="width:370px;">
       <div style="padding-top:3em;">
-        <h1>Add a Shipment to</h1>
-        <h1><%= full_project_name(@project) %></h1>
+        <h1>Add a Shipment</h1>
+        <h3><%= full_project_name(@project) %></h3>
       </div>
-        <h4 style="padding-top:20px;">Select a Product:</h4>
+        <h4 style="padding-top:10px;">Select a Product:</h4>
         <select id="ship_prod_select" class="data-searchable" style="width:300px;">
           <option value=0></option>
           <% @products.each do |p| %>

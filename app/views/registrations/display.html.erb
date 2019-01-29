@@ -9,7 +9,7 @@
         <hr>
         <%=reg.project.company.name%>: <%=reg.project.name%><br>
         Distributor: <%=reg.project.distributor.name%><br>
-        Expiration: <%=reg.expiration ? reg.expiration.strftime('%m/%d/%Y') : "None given" %><br>
+        Expiration: <%=format_date(reg.expiration)%><br>
         Contact: <%=reg.contact%><br>
         Notes: <%=reg.notes%><br>
         <% end %>

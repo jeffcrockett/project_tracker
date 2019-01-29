@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     if @project.save
       @project = Project.new
     end
-    redirect_to action: "new"
+    redirect_to "/projects/new"
   end
 
   def edit
@@ -25,7 +25,6 @@ class ProjectsController < ApplicationController
 
   def getshift
     @project = Project.find(params[:id])
-    # render 'getshift'
   end
 
   def doshift
@@ -35,16 +34,31 @@ class ProjectsController < ApplicationController
     @shipments.each do |s|
         s.update_attributes(date: s.date + params[:days].to_i.days + params[:weeks].to_i.weeks + params[:months].to_i.months)
     end
-    redirect_to action:"edit"
+    redirect_to "/projects/#{params[:id]}/edit"
+  end
+
+  def getclone
+    @shipment = Shipment.find(params[:id])
+    @project = Project.find(@shipment.project_id)
+  end
+
+  def doclone
+    s = Shipment.find(params[:id])
+    date = s.date
+    params[:howmany].to_i.times do
+      date = date + params[:days].to_i.days + params[:weeks].to_i.weeks + params[:months].to_i.months
+      Shipment.create(project_id:s.project_id, product_id:s.product_id, date:date, quantity:s.quantity, notes:s.notes)
+    end
+    redirect_to "/projects/#{s.project_id}/edit"
   end
 
   def update
     @projects = helpers.project_list
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
-      redirect_to action:"index"
+      redirect_to "/projects"
     else
-      redirect_to action:"edit", id: params[:id]
+      redirect_to "/projects/#{params[:id]}/edit"
     end
   end
 
@@ -58,7 +72,7 @@ class ProjectsController < ApplicationController
     @project.destroy()
     @projects = helpers.project_list
     @project = Project.new
-    redirect_to action:"markfordeath"
+    redirect_to "/projects/delete"
   end
 
   def review

@@ -8,13 +8,12 @@ class ShipmentsController < ApplicationController
 
   def create
     @shipment = Shipment.new(shipment_params)
-    puts "create: project ID #{@shipment.project_id} product ID #{@shipment.product_id}"
     if @shipment.save
       helpers.flash_success("Shipment successfully created.")
     else 
       helpers.flash_errors_for(@shipment)
     end
-    redirect_to "/projects/#{@shipment.product_id.to_s}/edit"
+    redirect_to "/projects/#{@shipment.project_id.to_s}/edit"
     
   end
 
@@ -31,13 +30,13 @@ class ShipmentsController < ApplicationController
     else
       helpers.flash_errors_for(@shipment)
     end
-    redirect_to "/projects/#{@shipment.product_id.to_s}/edit"
+    redirect_to "/projects/#{@shipment.project_id.to_s}/edit"
   end
 
   def destroy
     @shipment = Shipment.find_by id:params[:id]
     @shipment.destroy()
-    redirect_to "/projects/#{@shipment.product_id.to_s}/edit"
+    redirect_to "/projects/#{@shipment.project_id.to_s}/edit"
   end
 
   private

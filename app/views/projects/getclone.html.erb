@@ -1,0 +1,17 @@
+<%= render "shared/menu" %>
+<container>
+    <div class="row">
+        <div class="mx-auto">
+        <h1>Clone a shipment</h1>
+        <h3><%= full_project_name(@project)%></h3>
+        <%s = @shipment%>
+        <h3><%="#{format_date(s.date)}: #{s.quantity} of #{s.product.name}"%></h3><br><br>
+            Number of copies: <input type="number" id="cloneHowmany"><br><br>
+            <h3>Interval between shipments:</h1><br><br>
+            Days: <input type="number" id="cloneDays"><br><br>
+            Weeks: <input type="number" id="cloneWeeks"><br><br>
+            Months: <input type="number" id="cloneMonths"><br><br>
+            <button id=<%=@shipment.id%> type="button" class="btn btn-primary get-clone">Clone shipment</button>
+        </div>
+    </div>
+</container>

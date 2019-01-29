@@ -37,7 +37,7 @@
             <th style="padding-left:20px;">Project</th>
         <% @full_shipments.each do |ship| %>
           <tr>
-            <td style="padding:0px;"><%=ship[1].date.strftime('%m/%d/%Y')%> </td>
+            <td style="padding:0px;"><%=format_date(ship[1].date)%> </td>
             <td style="padding-left:20px;"><%= ship[1].product.name%></td>
             <td style="text-align:right;"><%=ship[1].quantity%></td>
             <td style="padding-left:20px;"><%= ship[0] %></td>

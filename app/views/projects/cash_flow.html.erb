@@ -37,7 +37,7 @@
         <% @flow_hash.keys.each do |key|  %>
           <% if @flow_hash[key] != 0%>
         <tr>
-          <td><%= key.strftime('%m/%d/%Y') %></td>
+          <td><%= format_date(key) %></td>
           <td style="text-align: right;"><%= number_with_precision(@flow_hash[key], delimiter:',', precision:0) %></td>
           <td style="text-align: right;"><%= number_with_precision(@cumulative_cash_flow += @flow_hash[key], delimiter:',', precision:0) %></td>
         <tr>

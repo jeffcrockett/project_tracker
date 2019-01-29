@@ -186,7 +186,26 @@ $(document).on("turbolinks:load", function () {
     let days = $("#shiftDays").val() ? $("#shiftDays").val() : "0";
     let weeks = $("#shiftWeeks").val() ? $("#shiftWeeks").val() : "0";
     let months = $("#shiftMonths").val() ? $("#shiftMonths").val() : "0";
-    window.location = "/projects/" + id + "/" + days + "/" + weeks + "/" + months  
+    window.location = "/projects/shift/" + id + "/" + days + "/" + weeks + "/" + months  
+  })
+})
+
+// Handle a click on a clone shipment button
+$(document).on("turbolinks:load", function () {
+  $(".clone-shipment").on("click", function (e) {
+    window.location = "/projects/" + e.target.id + "/getclone"
+  })
+})
+
+// Get values for shipment clone
+$(document).on("turbolinks:load", function () {
+  $(".get-clone").on("click", function (e) {
+    let id = e.target.id;
+    let howMany = $("#cloneHowmany").val() ? $("#cloneHowmany").val() : "0";
+    let days = $("#cloneDays").val() ? $("#cloneDays").val() : "0";
+    let weeks = $("#cloneWeeks").val() ? $("#cloneWeeks").val() : "0";
+    let months = $("#cloneMonths").val() ? $("#cloneMonths").val() : "0";
+    window.location = "/projects/clone/" + id + "/" + howMany + "/" + days + "/" + weeks + "/" + months  
   })
 })
 
@@ -249,12 +268,3 @@ $(document).on("turbolinks:load", function () {
   });
 });
 
-// Handle a click on the "User preferences" button
-$(document).on("turbolinks:load", function () {
-  $("#user_preferences").submit(function (e) {
-    e.preventDefault();
-    console.log('Submitting...')
-    window.location = "/projects/review";
-    
-  });
-});

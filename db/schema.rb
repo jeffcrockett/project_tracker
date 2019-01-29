@@ -65,8 +65,6 @@ ActiveRecord::Schema.define(version: 2019_01_14_205915) do
     t.integer "project_id"
     t.integer "product_id"
     t.integer "quantity"
-    t.decimal "cable_length", precision: 5, scale: 1
-    t.decimal "price", precision: 10, scale: 2
     t.date "date"
     t.text "notes"
     t.datetime "created_at", null: false
